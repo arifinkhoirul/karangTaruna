@@ -83,8 +83,8 @@
                                 <span>Blog</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('admin/event') ? 'active' : '' }}">
+                            <a href="{{ route('admin.event.index') }}" class='sidebar-link'>
                                 <i class="bi bi-alarm"></i>
                                 <span>Event</span>
                             </a>
