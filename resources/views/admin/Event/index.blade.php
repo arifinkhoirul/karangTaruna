@@ -8,7 +8,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Kelola Blog</h3>
+                    <h3>Kelola Event</h3>
                     <p class="text-subtitle text-muted">A sortable, searchable, paginated table without
                         dependencies thanks to simple-datatables.</p>
                 </div>
@@ -39,14 +39,14 @@
                     <form action="{{ route('admin.event.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Blog Baru</h5>
+                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Event Baru</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="nama_event" class="form-label">Nama Event</label>
-                                <input type="text" class="form-control" id="nama_event" name="nama_event" required>
+                                <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder="Masukkan Nama Event" required>
                             </div>
 
                             <div class="mb-3">
@@ -62,20 +62,21 @@
 
                             <div class="form-group mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
+                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required placeholder="Masukkan Deskripsi"></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-                                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required>
+                                <input type="date" class="form-control date" id="tanggal_mulai" name="tanggal_mulai" required placeholder="Pilih Tanggal Mulai">
                             </div>
                             <div class="mb-3">
                                 <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
-                                <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required>
+                                <input type="date" class="form-control date" id="tanggal_selesai" name="tanggal_selesai"
+                                    required placeholder="Pilih Tanggal Selesai">
                             </div>
                             <div class="mb-3">
                                 <label for="lokasi" class="form-label">Lokasi</label>
-                                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                                <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Masukkan Nama Lokasi" required>
                             </div>
                         </div>
 
@@ -97,7 +98,8 @@
             </div>
         @elseif (session('status_delete'))
             <div id="notification" class="alert alert-light-danger color-danger alert-dismissible fade show"><i
-                    class="bi bi-exclamation-circle"></i> <span class="ms-1">{{ ucwords(session('status_delete')) }}</span>.
+                    class="bi bi-exclamation-circle"></i> <span
+                    class="ms-1">{{ ucwords(session('status_delete')) }}</span>.
             </div>
         @endif
         {{-- Tabel Sectioon --}}
@@ -105,7 +107,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Simple Datatable
+                        Data Event
                     </h5>
                 </div>
                 <div class="card-body">
@@ -128,19 +130,20 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td class="text-truncate">{{ $event->nama_event }}</td>
                                     <td>
-                                        <img src="{{ asset($event->image) }}" alt="{{ $event->nama_event }}" width="80"
-                                            class="img-thumbnail">
+                                        <img src="{{ asset($event->image) }}" alt="{{ $event->nama_event }}"
+                                            width="80" class="img-thumbnail">
                                     </td>
                                     <td class="text-truncate" style="max-width: 250px">{{ $event->deskripsi }}</td>
                                     <td>{{ $event->tanggal_mulai }}</td>
                                     <td>{{ $event->tanggal_selesai }}</td>
                                     <td>{{ $event->lokasi }}</td>
                                     <td class="d-flex gap-2">
-                                        <a href="{{ route('admin.event.edit', $event->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('admin.event.edit', $event->id) }}"
+                                            class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('admin.event.delete', $event->id) }}"
-                                            method="POST" class="d-inline">
+                                        <form action="{{ route('admin.event.delete', $event->id) }}" method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -164,8 +167,8 @@
                                                                 data-bs-dismiss="modal" aria-label="Tutup"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak
-                                                            bisa dibatalkan.
+                                                            Apakah Anda yakin ingin menghapus data ini? Data yang dihapus
+                                                            tidak bisa di kembalikan lagi.
                                                         </div>
                                                         <div class="modal-footer border-0">
                                                             <button type="button" class="btn btn-secondary"

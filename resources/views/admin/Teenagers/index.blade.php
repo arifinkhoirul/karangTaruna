@@ -8,7 +8,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Kelola Blog</h3>
+                    <h3>Kelola Data Remaja</h3>
                     <p class="text-subtitle text-muted">A sortable, searchable, paginated table without
                         dependencies thanks to simple-datatables.</p>
                 </div>
@@ -27,7 +27,7 @@
         <!-- Tombol Tambah Blog -->
         <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahBlog">
-                Tambah Data Remaja
+                Tambah Remaja
             </button>
         </div>
 
@@ -166,8 +166,8 @@
                                                                 data-bs-dismiss="modal" aria-label="Tutup"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak
-                                                            bisa dibatalkan.
+                                                            Apakah Anda yakin ingin menghapus data ini? Data yang dihapus
+                                                            tidak bisa di kembalikan lagi.
                                                         </div>
                                                         <div class="modal-footer border-0">
                                                             <button type="button" class="btn btn-secondary"

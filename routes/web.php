@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeenagerController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,12 @@ Route::put('/admin/data-remaja/update/{id}', [TeenagerController::class, 'update
 Route::delete('/admin/data-remaja/delete/{id}', [TeenagerController::class, 'destroy'])->name('admin.data-remaja.destroy');
 
 
+
+Route::get('/admin/member', [MemberControlller::class, 'index'])->name('admin.member.index');
+Route::post('/admin/member', [MemberControlller::class, 'store'])->name('admin.member.store');
+Route::get('/admin/member/edit/{id}', [MemberControlller::class, 'edit'])->name('admin.member.edit');
+Route::put('/admin/member/update/{id}', [MemberControlller::class, 'update'])->name('admin.member.update');
+Route::delete('/admin/member/delete/{id}', [MemberControlller::class, 'destroy'])->name('admin.member.destroy');
 
 
 
