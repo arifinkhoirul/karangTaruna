@@ -48,7 +48,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tanggal_mulai">Tanggal Mulai</label>
-                            <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai"
+                            <input type="date" class="form-control date" id="tanggal_mulai" name="tanggal_mulai"
                                 value="{{ old('tanggal_mulai', $event->tanggal_mulai) }}" placeholder="Enter Tanggal Mulai">
                             @error('tanggal_mulai')
                                 <p class="text-danger">{{ $message }}</p>
@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="tanggal_selesai">Tanggal Selesai</label>
-                            <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai"
+                            <input type="date" class="form-control date" id="tanggal_selesai" name="tanggal_selesai"
                                 value="{{ old('tanggal_selesai', $event->tanggal_selesai) }}" placeholder="Enter Tanggal Selesai">
                             @error('tanggal_selesai')
                                 <p class="text-danger">{{ $message }}</p>

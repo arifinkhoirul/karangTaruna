@@ -27,7 +27,7 @@
         <!-- Tombol Tambah Blog -->
         <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahBlog">
-                Tambah Event
+                Tambah Data Remaja
             </button>
         </div>
 
@@ -36,47 +36,48 @@
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content px-3 py-3">
-                    <form action="{{ route('admin.event.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.data-remaja.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Blog Baru</h5>
+                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Data Remaja</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="nama_event" class="form-label">Nama Event</label>
-                                <input type="text" class="form-control" id="nama_event" name="nama_event" required>
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="name" value="{{ old('name') }}"
+                                    name="name" required placeholder="Masukkan Nama">
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="image" name="image" required>
-
-                                <!-- Preview Gambar -->
-                                <div class="mt-2">
-                                    <img id="previewImage" src="" alt="Preview Gambar"
-                                        style="max-height: 200px; display: none;" class="img-fluid rounded border">
-                                </div>
+                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                <input type="date" class="form-control date" id="tanggal_lahir"
+                                    value="{{ old('tanggal_lahir') }}" name="tanggal_lahir" required
+                                    placeholder="Pilih Tanggal">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
+                                <label for="alamat" class="form-label">Alamat</label>
+                                <textarea class="form-control" id="alamat" name="alamat" rows="3" required placeholder="Masukkan Alamat"></textarea>
                             </div>
 
                             <div class="mb-3">
-                                <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-                                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required>
+                                <label for="minat_bakat" class="form-label">Minat Bakat</label>
+                                <input type="text" class="form-control" id="minat_bakat"
+                                    placeholder="Masukkan Minat Bakat" name="minat_bakat" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
-                                <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="lokasi" class="form-label">Lokasi</label>
-                                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
-                            </div>
+
+                            <h6>Status</h6>
+                            <fieldset class="form-group">
+                                <select class="form-select" id="basicSelect" name="status">
+                                    <option disabled selected hidden>Pilih Staus Remaja</option>
+                                    <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                                    <option value="tidak aktif" {{ old('status') == 'tidak aktif' ? 'selected' : '' }}>Tidak
+                                        Aktif</option>
+                                </select>
+                            </fieldset>
+
                         </div>
 
                         <div class="modal-footer">
@@ -97,7 +98,8 @@
             </div>
         @elseif (session('status_delete'))
             <div id="notification" class="alert alert-light-danger color-danger alert-dismissible fade show"><i
-                    class="bi bi-exclamation-circle"></i> <span class="ms-1">{{ ucwords(session('status_delete')) }}</span>.
+                    class="bi bi-exclamation-circle"></i> <span
+                    class="ms-1">{{ ucwords(session('status_delete')) }}</span>.
             </div>
         @endif
         {{-- Tabel Sectioon --}}
@@ -105,7 +107,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Simple Datatable
+                        Data Remaja Rt 05
                     </h5>
                 </div>
                 <div class="card-body">
@@ -113,44 +115,44 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama Event</th>
-                                <th>Gambar</th>
-                                <th>Deskripsi</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
-                                <th>Lokasi</th>
+                                <th>Nama</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Alamat</th>
+                                <th>Minat Bakat</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @foreach ($teenagers as $teenager)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td class="text-truncate">{{ $event->nama_event }}</td>
-                                    <td>
-                                        <img src="{{ asset($event->image) }}" alt="{{ $event->nama_event }}" width="80"
-                                            class="img-thumbnail">
-                                    </td>
-                                    <td class="text-truncate" style="max-width: 250px">{{ $event->deskripsi }}</td>
-                                    <td>{{ $event->tanggal_mulai }}</td>
-                                    <td>{{ $event->tanggal_selesai }}</td>
-                                    <td>{{ $event->lokasi }}</td>
+                                    <td>{{ $teenager->name }}</td>
+                                    <td>{{ $teenager->tanggal_lahir }}</td>
+                                    <td>{{ $teenager->alamat }}</td>
+                                    <td>{{ $teenager->minat_bakat }}</td>
+                                    @if ($teenager->status == 'aktif')
+                                        <td class="text-success">{{ $teenager->status }}</td>
+                                    @else
+                                        <td class="text-danger">{{ $teenager->status }}</td>
+                                    @endif
                                     <td class="d-flex gap-2">
-                                        <a href="{{ route('admin.event.edit', $event->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('admin.data-remaja.edit', $teenager->id) }}"
+                                            class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('admin.event.delete', $event->id) }}"
+                                        <form action="{{ route('admin.data-remaja.destroy', $teenager->id) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#confirmDeleteModal-{{ $event->id }}">
+                                                data-bs-target="#confirmDeleteModal-{{ $teenager->id }}">
                                                 <i class="bi bi-trash"></i>
                                             </button>
 
 
                                             <!-- Modal alert hapus-->
-                                            <div class="modal fade" id="confirmDeleteModal-{{ $event->id }}"
+                                            <div class="modal fade" id="confirmDeleteModal-{{ $teenager->id }}"
                                                 tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content rounded-3 shadow">

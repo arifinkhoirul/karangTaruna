@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeenagerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,13 @@ Route::post('/admin/event', [EventController::class, 'store'])->name('admin.even
 Route::get('/admin/event/edit/{id}', [EventController::class, 'edit'])->name('admin.event.edit');
 Route::put('/admin/event/update/{id}', [EventController::class, 'update'])->name('admin.event.update');
 Route::delete('/admin/event/delete/{id}', [EventController::class, 'destroy'])->name('admin.event.delete');
+
+
+Route::get('/admin/data-remaja', [TeenagerController::class, 'index'])->name('admin.data-remaja.index');
+Route::post('/admin/data-remaja', [TeenagerController::class, 'store'])->name('admin.data-remaja.store');
+Route::get('/admin/data-remaja/edit/{id}', [TeenagerController::class, 'edit'])->name('admin.data-remaja.edit');
+Route::put('/admin/data-remaja/update/{id}', [TeenagerController::class, 'update'])->name('admin.data-remaja.update');
+Route::delete('/admin/data-remaja/delete/{id}', [TeenagerController::class, 'destroy'])->name('admin.data-remaja.destroy');
 
 
 
