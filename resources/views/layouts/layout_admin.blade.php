@@ -115,6 +115,24 @@
                                 <span>Pemasukan Kas</span>
                             </a>
                         </li>
+                        <li class="sidebar-item ">
+                            <a href="" class='sidebar-link'>
+                                <i class="bi bi-cash-stack"></i>
+                                <span>Pengeluaran Kas</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ">
+                            <a href="" class='sidebar-link'>
+                                <i class="bi bi-images"></i>
+                                <span>Main Banner</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ">
+                            <a href="" class='sidebar-link'>
+                                <i class="bi bi-share-fill"></i>
+                                <span>Documentation</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

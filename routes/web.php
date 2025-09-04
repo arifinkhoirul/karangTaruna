@@ -7,17 +7,48 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeenagerController;
+use App\Http\Controllers\UserController;
 use App\Models\CashBook;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+// ----------------------------USER---------------------------------------------------------------------
+
+Route::get('/', [UserController::class, 'homepage'])->name('user.homepage');
+
+Route::get('/pengurus', [UserController::class, 'pengurus'])->name('user.pengurus');
+
+Route::get('/blogs', [UserController::class, 'blog'])->name('user.blog');
+
+Route::get('/events', [UserController::class, 'event'])->name('user.event');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -62,7 +93,7 @@ Route::get('admin/pemasukan-kas/edit/{id}', [CashBookController::class, 'edit'])
 Route::put('admin/pemasukan-kas/update/{id}', [CashBookController::class, 'update'])->name('admin.pemasukan-kas.update');
 Route::delete('/admin/pemasukan-kas/delete/{id}', [CashBookController::class, 'destroy'])->name('admin.pemasukan-kas.destroy');
 
-
+// ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
