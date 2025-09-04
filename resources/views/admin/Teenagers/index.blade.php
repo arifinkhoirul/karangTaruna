@@ -128,7 +128,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $teenager->name }}</td>
-                                    <td>{{ $teenager->tanggal_lahir }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($teenager->tanggal_lahir)->format(' d F Y') }}</td>
                                     <td>{{ $teenager->alamat }}</td>
                                     <td>{{ $teenager->minat_bakat }}</td>
                                     @if ($teenager->status == 'aktif')

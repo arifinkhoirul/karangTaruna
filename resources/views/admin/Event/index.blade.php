@@ -134,8 +134,8 @@
                                             width="80" class="img-thumbnail">
                                     </td>
                                     <td class="text-truncate" style="max-width: 250px">{{ $event->deskripsi }}</td>
-                                    <td>{{ $event->tanggal_mulai }}</td>
-                                    <td>{{ $event->tanggal_selesai }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($event->tanggal_mulai)->format(' d F Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($event->tanggal_selesai)->format(' d F Y') }}</td>
                                     <td>{{ $event->lokasi }}</td>
                                     <td class="d-flex gap-2">
                                         <a href="{{ route('admin.event.edit', $event->id) }}"

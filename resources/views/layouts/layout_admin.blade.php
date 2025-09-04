@@ -109,8 +109,8 @@
                                 <span>Anggota</span>
                             </a>
                         </li>
-                        <li class="sidebar-item ">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('admin/pemasukan-kas*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pemasukan-kas.index') }}" class='sidebar-link'>
                                 <i class="bi bi-cash-stack"></i>
                                 <span>Pemasukan Kas</span>
                             </a>

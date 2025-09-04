@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CashBookController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeenagerController;
+use App\Models\CashBook;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -51,6 +53,16 @@ Route::post('/admin/member', [MemberControlller::class, 'store'])->name('admin.m
 Route::get('/admin/member/edit/{id}', [MemberControlller::class, 'edit'])->name('admin.member.edit');
 Route::put('/admin/member/update/{id}', [MemberControlller::class, 'update'])->name('admin.member.update');
 Route::delete('/admin/member/delete/{id}', [MemberControlller::class, 'destroy'])->name('admin.member.destroy');
+
+
+
+Route::get('admin/pemasukan-kas', [CashBookController::class, 'index'])->name('admin.pemasukan-kas.index');
+Route::post('admin/pemasukan-kas', [CashBookController::class, 'store'])->name('admin.pemasukan-kas.store');
+Route::get('admin/pemasukan-kas/edit/{id}', [CashBookController::class, 'edit'])->name('admin.pemasukan-kas.edit');
+Route::put('admin/pemasukan-kas/update/{id}', [CashBookController::class, 'update'])->name('admin.pemasukan-kas.update');
+Route::delete('/admin/pemasukan-kas/delete/{id}', [CashBookController::class, 'destroy'])->name('admin.pemasukan-kas.destroy');
+
+
 
 
 
