@@ -115,16 +115,16 @@
                                 <span>Pemasukan Kas</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('admin/pengeluaran-kas/*') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('admin/pengeluaran-kas*') ? 'active' : '' }}">
                             <a href="{{ route('admin.pengeluaran-kas.index') }}" class='sidebar-link'>
                                 <i class="bi bi-cash-stack"></i>
                                 <span>Pengeluaran Kas</span>
                             </a>
                         </li>
-                        <li class="sidebar-item ">
-                            <a href="" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('admin/main-images*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.main-image.index') }}" class='sidebar-link'>
                                 <i class="bi bi-images"></i>
-                                <span>Main Banner</span>
+                                <span>Main Images</span>
                             </a>
                         </li>
                         <li class="sidebar-item ">

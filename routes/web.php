@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CashBookController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\PengeluaranKasController;
 use App\Http\Controllers\ProfileController;
@@ -103,6 +104,12 @@ Route::put('admin/pengeluaran-kas/update/{id}', [PengeluaranKasController::class
 Route::delete('admin/pengeluaran-kas/delete/{id}', [PengeluaranKasController::class, 'destroy'])->name('admin.pengeluaran-kas.destroy');
 
 
+
+Route::get('admin/main-images', [MainImageController::class, 'index'])->name('admin.main-image.index');
+Route::post('admin/main-images', [MainImageController::class, 'store'])->name('admin.main-image.store');
+Route::get('admin/main-images/edit/{id}', [MainImageController::class, 'edit'])->name('admin.main-images.edit');
+Route::put('admin/main-images/update/{id}', [MainImageController::class, 'update'])->name('admin.main-images.update');
+Route::delete('admin/main-images/delete/{id}', [MainImageController::class, 'destroy'])->name('admin.main-images.destroy');
 
 // ----------------------------------------------------------------------------------------------------------------------------------------
 
