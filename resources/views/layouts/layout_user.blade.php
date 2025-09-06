@@ -9,21 +9,22 @@
     <link href="{{ asset('boostrap-file/css/bootstrap.min.css') }} " rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <link rel="shortcut icon" href="{{ asset('mazer/assets/compiled/svg/favicon.svg"') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('mazer/assets/compiled/svg/favicon.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/iconly.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <style type="text/css">
         .warna-footer {
             background-color: rgb(242, 242, 242)
         }
-
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+    {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-2">
         <div class="container-fluid">
             <!-- Logo kiri -->
@@ -134,9 +135,8 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-4">
-                                    <img class="ms-2"
-                                        src="{{ asset('logo-karangtaruna.png') }}"
-                                        alt="Logo" width="100" height="80">
+                                    <img class="ms-2" src="{{ asset('logo-karangtaruna.png') }}" alt="Logo"
+                                        width="100" height="80">
                                 </div>
                                 <div class="col-8">
                                     <p class="fw-bold pt-4 fs-5">Karang Taruna</p>

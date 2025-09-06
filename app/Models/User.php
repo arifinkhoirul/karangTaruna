@@ -70,4 +70,16 @@ class User extends Authenticatable
     public function members() {
         return $this->hasMany(Member::class);
     }
+
+    public function documentations() {
+        return $this->hasMany(Documentation::class);
+    }
+
+    public function mainImages() {
+        return $this->hasMany(MainImage::class);
+    }
+
+    public function pengeluaranKas() {
+        return $this->hasMany(PengeluaranKas::class);
+    }
 }
