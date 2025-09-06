@@ -127,10 +127,14 @@
                                 <span>Main Images</span>
                             </a>
                         </li>
-                        <li class="sidebar-item ">
-                            <a href="" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('admin/documentation*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.documentation.index') }}" class='sidebar-link'>
                                 <i class="bi bi-share-fill"></i>
                                 <span>Documentation</span>
+                            </a>
+                        </li>
+                            <a href="{{ route('user.homepage') }}" class='mt-5 btn btn-sm btn-dark'>
+                                <span>Back to Web User</span>
                             </a>
                         </li>
                     </ul>

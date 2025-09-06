@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CashBookController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\MemberControlller;
@@ -110,6 +111,17 @@ Route::post('admin/main-images', [MainImageController::class, 'store'])->name('a
 Route::get('admin/main-images/edit/{id}', [MainImageController::class, 'edit'])->name('admin.main-images.edit');
 Route::put('admin/main-images/update/{id}', [MainImageController::class, 'update'])->name('admin.main-images.update');
 Route::delete('admin/main-images/delete/{id}', [MainImageController::class, 'destroy'])->name('admin.main-images.destroy');
+
+
+
+Route::get('admin/documentation', [DocumentationController::class, 'index'])->name('admin.documentation.index');
+Route::post('admin/documentation', [DocumentationController::class, 'store'])->name('admin.documentation.store');
+Route::get('admin/documentation/edit/{id}', [DocumentationController::class, 'edit'])->name('admin.documentation.edit');
+Route::put('admin/documentation/update/{id}', [DocumentationController::class, 'update'])->name('admin.documentation.update');
+Route::delete('admin/documentation/delete/{id}', [DocumentationController::class, 'destroy'])->name('admin.documentation.destroy');
+
+
+
 
 // ----------------------------------------------------------------------------------------------------------------------------------------
 

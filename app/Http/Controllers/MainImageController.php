@@ -94,6 +94,10 @@ class MainImageController extends Controller
     public function destroy(int $id) {
         $mainImage = MainImage::find($id);
 
+        if($mainImage->image && file_exists(public_path($mainImage->image))) {
+            unlink(public_path($mainImage->image));
+        }
+
         $mainImage->delete();
 
         return redirect()->route('admin.main-image.index')->with(['status_delete' => 'data main image berhasil dihapus']);
