@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* indikator aktif */
+[data-carousel-slide-to][aria-current="true"] {
+  @apply bg-white dark:bg-primary;
+}
+
+/* indikator non-aktif */
+[data-carousel-slide-to][aria-current="false"] {
+  @apply bg-white/50 dark:bg-bg1/50 hover:bg-white dark:hover:bg-primary;
+}
+
+
+@layer components {
+    body {
+        @apply bg-bg1 font-rubik box-border;
+    }
+}

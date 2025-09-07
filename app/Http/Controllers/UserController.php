@@ -34,4 +34,19 @@ class UserController extends Controller
 
         return view('users.event', compact('events'));
     }
+
+
+    public function documentations() {
+        return view('users.documentation');
+    }
+
+
+    public function dataRemaja() {
+        return view('users.data_remaja');
+    }
+
+
+    public function dataUangKas() {
+        return view('users.data_uang_kas');
+    }
 }

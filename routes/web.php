@@ -32,6 +32,11 @@ Route::get('/blogs', [UserController::class, 'blog'])->name('user.blog');
 
 Route::get('/events', [UserController::class, 'event'])->name('user.event');
 
+Route::get('/documentations', [UserController::class, 'documentations'])->name('user.documentation');
+
+Route::get('/data-remaja', [UserController::class, 'dataRemaja'])->name('user.data-remaja');
+
+Route::get('/data-uang-kas', [UserController::class, 'dataUangKas'])->name('user.data-uang-kas');
 
 
 
