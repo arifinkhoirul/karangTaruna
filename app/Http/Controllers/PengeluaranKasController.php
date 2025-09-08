@@ -10,7 +10,9 @@ class PengeluaranKasController extends Controller
     public function index() {
         $allPengeluaranKas = PengeluaranKas::all();
 
-        return view('admin.PengeluaranKas.index', compact('allPengeluaranKas'));
+        $totalPengeluaran = PengeluaranKas::sum('jumlah');
+
+        return view('admin.PengeluaranKas.index', compact('allPengeluaranKas', 'totalPengeluaran'));
     }
 
 

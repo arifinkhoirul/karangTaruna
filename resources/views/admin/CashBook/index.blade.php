@@ -9,8 +9,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Kelola Data Pemasukan Kas</h3>
-                    <p class="text-subtitle text-muted">A sortable, searchable, paginated table without
-                        dependencies thanks to simple-datatables.</p>
+                    <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi data</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -206,6 +205,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <button class="btn btn-success">Rp {{ number_format($totalPemasukan, '0', ',', '.') }}</button>
                 </div>
             </div>
         </section>

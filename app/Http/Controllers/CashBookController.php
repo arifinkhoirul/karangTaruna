@@ -12,7 +12,9 @@ class CashBookController extends Controller
         $teenagers = Teenager::all();
         $cashBooks = CashBook::all();
 
-        return view('admin.CashBook.index', compact('cashBooks', 'teenagers'));
+        $totalPemasukan = CashBook::where('status', 'sudah bayar')->sum('jumlah');
+
+        return view('admin.CashBook.index', compact('cashBooks', 'teenagers', 'totalPemasukan'));
     }
 
 
