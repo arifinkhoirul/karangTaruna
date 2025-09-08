@@ -51,6 +51,17 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="image" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" id="image" name="image">
+
+                                <!-- Preview Gambar -->
+                                <div class="mt-2">
+                                    <img id="previewImage" src="" alt="Preview Gambar"
+                                        style="max-height: 200px; display: none;" class="img-fluid rounded border">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                 <input type="date" class="form-control date" id="tanggal_lahir"
                                     value="{{ old('tanggal_lahir') }}" name="tanggal_lahir" required
@@ -116,6 +127,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
+                                <th>Foto</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Alamat</th>
                                 <th>Minat Bakat</th>
@@ -128,6 +140,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $teenager->name }}</td>
+                                    <td>
+                                        <img src="{{ asset($teenager->image) }}" alt="{{ $teenager->name }}"
+                                            width="80" class="img-thumbnail">
+                                    </td>
                                     <td>{{ \Carbon\Carbon::parse($teenager->tanggal_lahir)->format(' d F Y') }}</td>
                                     <td>{{ $teenager->alamat }}</td>
                                     <td>{{ $teenager->minat_bakat }}</td>
@@ -201,7 +217,7 @@
                 let bsAlert = new bootstrap.Alert(alert);
                 bsAlert.close();
             }
-        }, 1000); // 3 detik
+        }, 1500); // 3 detik
 
 
 

@@ -109,6 +109,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
+                                {{-- <th>Image</th> --}}
                                 <th>Jabatan</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -119,6 +120,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $member->teenager->name }}</td>
+                                    {{-- <td>
+                                        <img src="{{ asset($member->teenager->image) }}" alt="{{ $member->teenager->name }}"
+                                            width="80" class="img-thumbnail">
+                                    </td> --}}
                                     <td>{{ $member->jabatan }}</td>
                                     @if ($member->status == 'aktif')
                                         <td class="text-success">{{ $member->status }}</td>

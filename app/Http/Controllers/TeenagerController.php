@@ -18,6 +18,7 @@ class TeenagerController extends Controller
         $validated = $request->validate(
             [
                 'name' => 'required',
+                // 'image' => 'required',
                 'tanggal_lahir' => 'required',
                 'alamat' => 'required',
                 'minat_bakat' => 'required',
@@ -25,12 +26,23 @@ class TeenagerController extends Controller
             ],
             [
                 'name.required' => 'masukkan data dengan benar',
+                // 'image.required' => 'masukkan data dengan benar',
                 'tanggal_lahir.required' => 'masukkan data dengan benar',
                 'alamat.required' => 'masukkan data dengan benar',
                 'minat_bakat.required' => 'masukkan data dengan benar',
                 'status.required' => 'masukkan data dengan benar',
             ],
         );
+
+        // simpan file gambar
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/teenagers'), $filename);
+
+            // overwrite field image agar tersimpan nama filenya
+            $validated['image'] = 'uploads/teenagers/' . $filename;
+        }
 
 
         $validated['user_id'] = 1;
@@ -68,6 +80,21 @@ class TeenagerController extends Controller
             ],
         );
 
+        // simpan file gambar
+        if ($request->hasFile('image')) {
+            // hapus gambar lama (kalau ada)
+            if ($teenager->image && file_exists(public_path($teenager->image))) {
+                unlink(public_path($teenager->image));
+            }
+
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/teenagers'), $filename);
+
+            // overwrite field image agar tersimpan nama filenya
+            $validated['image'] = 'uploads/teenagers/' . $filename;
+        }
+
         $validated['user_id'] = 1;
 
         $teenager->update($validated);
@@ -78,6 +105,10 @@ class TeenagerController extends Controller
 
     public function destroy(int $id) {
         $teenager = Teenager::find($id);
+
+        if($teenager->image && file_exists(public_path($teenager->image))) {
+            unlink(public_path($teenager->image));
+        }
 
         $teenager->delete();
 
