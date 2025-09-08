@@ -29,7 +29,7 @@
 
                         {{-- ? deskripsi --}}
                         <div class="flex flex-col gap-3 max-md:gap-2">
-                            <h5 class="text-primary text-base font-semibold capitalize">design</h5>
+                            <h5 class="text-primary text-base font-semibold uppercase">design</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                 {{ $blog->judul }}

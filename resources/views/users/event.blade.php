@@ -36,7 +36,7 @@
 
                         {{-- ? deskripsi --}}
                         <div class="flex flex-col gap-4 max-md:gap-3">
-                            <h5 class="text-primary text-base font-semibold capitalize">EVENT 17 AGT</h5>
+                            <h5 class="text-primary text-base font-semibold uppercase">EVENT 17 AGT</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                 Upacara & Perayaan Hari Kemerdekaan Republik
