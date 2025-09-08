@@ -19,12 +19,14 @@
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/simple-datatables/style.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable.css')}}">
-    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app.css')}}">
-    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app-dark.css')}}">
+    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app-dark.css') }}">
 
     {{-- flatpicker --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
 
 </head>
 
@@ -133,9 +135,9 @@
                                 <span>Documentation</span>
                             </a>
                         </li>
-                            <a href="{{ route('user.homepage') }}" class='mt-5 btn btn-sm btn-dark'>
-                                <span>Back to Web User</span>
-                            </a>
+                        <a href="{{ route('user.homepage') }}" class='mt-5 btn btn-sm btn-dark'>
+                            <span>Back to Web User</span>
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -177,8 +179,8 @@
     <script src="{{ asset('mazer/assets/static/js/pages/dashboard.js') }}"></script>
 
 
-    <script src="{{asset('mazer/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
-    <script src="{{asset('mazer/assets/static/js/pages/simple-datatables.js') }}"></script>
+    <script src="{{ asset('mazer/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
+    <script src="{{ asset('mazer/assets/static/js/pages/simple-datatables.js') }}"></script>
 
     {{-- flatpicker --}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
