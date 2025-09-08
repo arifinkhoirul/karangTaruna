@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Karang Taruna</title>
 
     {{-- ? google font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,11 +178,11 @@
                         </li>
                         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
                             <a href='{{ route('user.homepage') }}'
-                                class="block font-medium text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.homepage') ? 'text-primary font-bold' : 'text-textSecondary' }}">Home</a>
+                                class="block font-normal text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.homepage') ? 'text-primary font-bold' : 'text-textSecondary' }}">Home</a>
                         </li>
                         <li class="relative max-lg:border-b max-lg:border-gray-300 max-lg:py-2 px-3 ">
                             <button id="pagesToggle"
-                                class="text-textSecondary font-medium text-[15px] hover:text-primary transition-all duration-500 ease-in-out w-full text-left flex justify-between items-center">
+                                class="text-textSecondary font-normal text-[15px] hover:text-primary transition-all duration-500 ease-in-out w-full text-left flex justify-between items-center">
                                 Pages
                                 <svg class="w-4 h-4 ml-2 transition-transform" id="pagesArrow" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -196,21 +196,21 @@
                                 class="absolute flex flex-col gap-1 p-4 left-0 mt-2 w-56 bg-bg1 shadow-[0_3px_10px_rgb(0,0,0,0.1)] max-lg:w-full rounded-md max-lg:p-0 lg:group-hover:block max-lg:static max-lg:mt-2 max-lg:shadow-none overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                 <li>
                                     <a href="{{ route('user.data-remaja') }}"
-                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-medium hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
+                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-normal hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
                                             class="bi bi-file-earmark-person-fill flex items-center"></i>
                                         Data Remaja
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('user.data-uang-kas') }}"
-                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-medium hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
+                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-normal hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
                                             class="bi bi-cash-stack flex items-center"></i>
                                         Data Uang Kas
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('user.documentation') }}"
-                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-medium hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
+                                        class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-normal hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
                                             class="bi bi-file-earmark-image flex items-center"></i>
                                         Dokumentasi
                                     </a>
@@ -220,15 +220,15 @@
 
                         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3"><a
                                 href='{{ route('user.pengurus') }}'
-                                class="block font-medium text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.pengurus') ? 'text-primary font-bold' : 'text-textSecondary' }}">Pengurus</a>
+                                class="block font-normal text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.pengurus') ? 'text-primary font-bold' : 'text-textSecondary' }}">Pengurus</a>
                         </li>
                         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3"><a
                                 href='{{ route('user.blog') }}'
-                                class="block font-medium text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.blog') ? 'text-primary font-bold' : 'text-textSecondary' }}">Blog</a>
+                                class="block font-normal text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.blog') ? 'text-primary font-bold' : 'text-textSecondary' }}">Blog</a>
                         </li>
                         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3"><a
                                 href='{{ route('user.event') }}'
-                                class="block font-medium text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.event') ? 'text-primary font-bold' : 'text-textSecondary' }}">Event</a>
+                                class="block font-normal text-[15px] hover:text-primary transition-all duration-500 ease-in-out {{ request()->routeIs('user.event') ? 'text-primary font-bold' : 'text-textSecondary' }}">Event</a>
                         </li>
                     </ul>
                 </div>
@@ -266,17 +266,17 @@
                         src="{{ asset('logo-karangtaruna.png') }}" alt="logo" class="w-14 max-md:w-12" />
                     <span class="capitalize text-textPrimary text-lg font-bold md:text-xl">karang taruna</span>
                 </a>
-                <p class="text-textSecondary max-md:text-base max-sm:text-sm leading-relaxed">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">Ut enim ad minima veniam, quis nostrum exercitationem ullam
                     corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
             </div>
             <div class="flex flex-col gap-4">
                 <h4 class="text-xl text-textPrimary font-semibold capitalize">contact</h4>
-                <p class="text-textSecondary max-md:text-base max-sm:text-sm leading-relaxed">+1 601-201-5580</p>
-                <a href="#" class="underline text-textSecondary max-md:text-base max-sm:text-sm leading-relaxed">ensome@info.co.us</a>
+                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">+1 601-201-5580</p>
+                <a href="#" class="underline text-textSecondary font-light max-md:text-base leading-relaxed">ensome@info.co.us</a>
             </div>
             <div class="flex flex-col gap-4">
                 <h4 class="text-xl text-textPrimary font-semibold capitalize">location</h4>
-                <p class="text-textSecondary max-md:text-base max-sm:text-sm leading-relaxed">1642 Washington Avenue, Jackson,
+                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">1642 Washington Avenue, Jackson,
                     MS, Mississippi, 39201</p>
             </div>
             <div class="flex flex-col gap-4">

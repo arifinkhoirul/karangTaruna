@@ -4,9 +4,9 @@
     {{-- ? image slider --}}
     <section class="max-w-screen-3xl mx-auto flex flex-col pt-32 px-4 max-md:pt-28 sm:px-10">
         <div id="default-carousel" class="relative w-full" data-carousel="slide">
-            <!-- Carousel wrapper -->
+            {{-- ? Carousel wrapper --}}
             <div class="relative h-[600px] overflow-hidden rounded-lg max-2xl:h-[400px] max-md:h-[220px] ">
-                <!-- Item 1 -->
+                {{-- ? looping --}}
                 @for ($i = 0; $i < 5; $i++)
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="{{ asset('uploads/banner/Frame 3.jpg') }}"
@@ -14,7 +14,7 @@
                     </div>
                 @endfor
             </div>
-            <!-- Slider indicators -->
+            {{-- ? Slider indicators --}}
             <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
                     data-carousel-slide-to="0"></button>
@@ -27,7 +27,7 @@
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
                     data-carousel-slide-to="4"></button>
             </div>
-            <!-- Slider controls -->
+            {{-- ? Slider controls --}}
             <button type="button"
                 class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                 data-carousel-prev>
@@ -71,11 +71,11 @@
             {{-- ? text visi misi --}}
             <div class="flex flex-col gap-5">
                 <div class="flex flex-col gap-6">
-                    <h1 class="text-textPrimary text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug">
+                    <h1 class="text-textPrimary text-4xl max-lg:text-3xl capitalize font-bold leading-snug">
                         visi & misi</h1>
                     <div class="h-1 w-20 bg-primary rounded-full"></div>
                 </div>
-                <p class="text-textSecondary text-lg max-lg:text-base max-md:text-sm leading-relaxed"><span
+                <p class="text-textSecondary font-light text-lg max-lg:text-base leading-relaxed"><span
                         class="text-textPrimary font-bold">Visi</span> menjadi wadah generasi
                     muda yang kreatif, berdaya, dan berakhlak mulia untuk membangun masyarakat sejahtera. <span
                         class="text-textPrimary font-bold">Misi</span> menumbuhkan kepedulian sosial, mengembangkan potensi
@@ -94,7 +94,7 @@
                     <h1
                         class="text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug max-md:text-center">
                         We Need Sponsors!</h1>
-                    <p class="text-lg font-thin max-lg:text-base max-md:text-sm leading-relaxed max-md:text-center">Jadilah
+                    <p class="text-lg font-light max-lg:text-base leading-relaxed max-md:text-center">Jadilah
                         sponsor kami dan ikut berkontribusi menciptakan dampak positif</p>
                 </div>
                 {{-- ? box 2 --}}
@@ -118,8 +118,8 @@
             <h1
                 class="text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
                 sponsor</h1>
-            <!-- Container sponsor -->
-            <div class="relative w-full overflow-hidden bg-bg1 py-6">
+            {{-- ? container sponsor --}}
+            <div class="relative w-full overflow-hidden bg-bg1 py-3">
                 <!-- Track -->
                 <div class="flex  gap-10 w-max animate-scroll">
                     <!-- Set 1 -->
@@ -146,49 +146,56 @@
 
     {{-- ? baca blog --}}
     <main class="max-w-screen-3xl mx-auto flex flex-col pb-20 px-4 max-md:pb-10 sm:px-10">
-        <div class="flex flex-col gap-12 max-lg:gap-10 max-md:gap-6">
+        <div class="flex flex-col gap-12 max-lg:gap-10 max-md:gap-8">
             {{-- ? baca blog --}}
             <div class="flex flex-col gap-3 max-md:gap-2">
-                <h1 class="text-textPrimary text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug">
+                <h1 class="text-textPrimary text-4xl max-lg:text-3xl capitalize font-bold leading-snug">
                     baca blog</h1>
                 <div class="h-1 w-20 bg-primary rounded-full"></div>
             </div>
 
             {{-- ? card --}}
-            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6">
+            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card 1 --}}
                 @foreach ($blogs as $blog)
-                    <div class="flex flex-col gap-8 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.05)]">
+                    <a href="#"
+                        class="flex flex-col gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg cursor-pointer">
                         {{-- ? image --}}
-                        <div class="w-full">
+                        <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset($blog->image) }}" alt=""
-                                class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px]">
+                                class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
                         </div>
 
                         {{-- ? deskripsi --}}
-                        <div class="flex flex-col gap-3 cursor-pointer">
+                        <div class="flex flex-col gap-3 max-md:gap-2">
                             <h5 class="text-primary text-base font-semibold capitalize">design</h5>
-                            <h1 class="text-textPrimary font-semibold text-2xl line-clamp-2">{{ $blog->judul }}</h1>
-                            <p class="text-textSecondary line-clamp-3">{{ $blog->narasi_blog }}
+                            <h1
+                                class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
+                                {{ $blog->judul }}
+                            </h1>
+                            <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                {{ $blog->narasi_blog }}
                             </p>
-                            <div class="flex gap-3 items-center mt-6">
+                            <div class="flex gap-3 items-center mt-6 max-md:mt-4">
                                 <div class="w-12 h-12 rounded-full overflow-hidden">
                                     <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
-                                        alt="" class="w-full h-full object-cover">
+                                        alt=""
+                                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                 </div>
                                 <div class="flex flex-col">
                                     <h5 class="font-semibold capitalize text-textPrimary">{{ $blog->user->name }}</h5>
-                                    <p class="text-textSecondary">{{ $blog->tanggal_post }}</p>
+                                    <p class="text-textSecondary text-sm font-light">{{ $blog->tanggal_post }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                 @endforeach
+                    </a>
+                @endforeach
             </div>
+
 
             {{-- ? button view more --}}
             <div class="text-center ">
-                <a href="{{ route( 'user.blog' ) }}"
+                <a href="{{ route('user.blog') }}"
                     class=" animate-bounce inline-block px-6 py-3 mt-4 capitalize text-xs lg:px-8 lg:py-4 md:text-sm
                         text-bg1 border border-primary bg-primary
                         hover:bg-red-700 hover:border-red-700 hover:text-bg1 hover:scale-105

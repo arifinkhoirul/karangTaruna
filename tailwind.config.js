@@ -54,7 +54,7 @@ export default {
                 bg1: "#FEFEFE",
                 bg2: "#F9F9F9",
                 textPrimary: "#292D33",
-                textSecondary: "#667085",
+                textSecondary: "#404550",
             },
         },
     },
