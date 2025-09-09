@@ -159,7 +159,7 @@
                 {{-- ? card 1 --}}
                 @foreach ($blogs as $blog)
                     <a href="#"
-                        class="flex flex-col gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                        class="flex flex-col gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset($blog->image) }}" alt=""

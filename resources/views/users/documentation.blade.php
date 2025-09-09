@@ -6,11 +6,13 @@
         <div class="flex flex-col gap-8">
             {{-- ? text baca blog --}}
             <div class="flex flex-col gap-2 max-md:gap-2">
-                <h1 class="text-textPrimary text-4xl max-lg:text-3xl capitalize font-bold leading-snug">
+                <h1 class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug">
                     Dokumentasi</h1>
-                <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
-                    Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
-                <div class="h-1 w-20 bg-primary rounded-full"></div>
+                <div class="flex flex-col gap-4 max-md:gap-2">
+                    <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
+                        Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
+                    <div class="h-1 w-20 bg-primary rounded-full"></div>
+                </div>    
             </div>
 
             {{-- ? gambar slider --}}
@@ -26,7 +28,7 @@
                 {{-- ? card looping --}}
                 @for ($i = 0; $i < 3; $i++)
                     <a href="{{ route('user.blog') }}"
-                        class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                        class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset('uploads/banner/Frame 3.jpg') }}" alt=""
@@ -35,7 +37,7 @@
 
                         {{-- ? deskripsi --}}
                         <div class="flex flex-col gap-4 max-md:gap-3">
-                            <h5 class="text-primary text-base font-semibold capitalize">EVENT 17 AGT</h5>
+                            <h5 class="text-primary text-base font-semibold uppercase">DOKUMENTASI</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                 Upacara & Perayaan Hari Kemerdekaan Republik
