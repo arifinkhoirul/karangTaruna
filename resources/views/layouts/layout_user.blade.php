@@ -30,7 +30,6 @@
         .animate-scroll:hover {
             animation-play-state: paused;
         }
-
     </style>
 
     {{-- ? tailwind css via vite --}}
@@ -146,8 +145,8 @@
                         src="{{ asset('logo-karangtaruna.png') }}" alt="logo" class="w-14 max-md:w-12" />
                     <span class="capitalize text-textPrimary text-lg font-bold md:text-xl">karang taruna</span>
                 </a>
-                <a href="{{ route('user.homepage') }}" class="hidden max-sm:block"><img src="{{ asset('logo-karangtaruna.png') }}"
-                        alt="logo" class="w-12" /></a>
+                <a href="{{ route('user.homepage') }}" class="hidden max-sm:block"><img
+                        src="{{ asset('logo-karangtaruna.png') }}" alt="logo" class="w-12" /></a>
 
                 {{-- ? open menu --}}
                 <div id="collapseMenu"
@@ -235,11 +234,14 @@
 
                 {{-- ? button login --}}
                 <div class="flex gap-3 max-md:gap-2">
-                    <a href='{{ route('login') }}'
-                        class="px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">Login</a>
-                    <a href='{{ route('register') }}'
-                        class="px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">Sign
-                        up</a>
+                    <div class="flex gap-3 max-md-gap-2">         
+                        <a href='{{ route('login') }}' class="px-5 py-2 text-xs capitalize rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">
+                            login
+                        </a>
+                        <a href='{{ route('register') }}'
+                            class="px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">Sign
+                            up</a>
+                    </div>
 
                     <button id="toggleOpen" class="lg:hidden cursor-pointer">
                         <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -249,6 +251,9 @@
                         </svg>
                     </button>
                 </div>
+
+                
+
             </div>
         </div>
     </header>
@@ -266,50 +271,52 @@
                         src="{{ asset('logo-karangtaruna.png') }}" alt="logo" class="w-14 max-md:w-12" />
                     <span class="capitalize text-textPrimary text-lg font-bold md:text-xl">karang taruna</span>
                 </a>
-                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">Ut enim ad minima veniam,
+                    quis nostrum exercitationem ullam
                     corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
             </div>
             <div class="flex flex-col gap-4">
                 <h4 class="text-xl text-textPrimary font-semibold capitalize">contact</h4>
                 <p class="text-textSecondary font-light max-md:text-base leading-relaxed">+1 601-201-5580</p>
-                <a href="#" class="underline text-textSecondary font-light max-md:text-base leading-relaxed">ensome@info.co.us</a>
+                <a href="#"
+                    class="underline text-textSecondary font-light max-md:text-base leading-relaxed">ensome@info.co.us</a>
             </div>
             <div class="flex flex-col gap-4">
                 <h4 class="text-xl text-textPrimary font-semibold capitalize">location</h4>
-                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">1642 Washington Avenue, Jackson,
+                <p class="text-textSecondary font-light max-md:text-base leading-relaxed">1642 Washington Avenue,
+                    Jackson,
                     MS, Mississippi, 39201</p>
             </div>
             <div class="flex flex-col gap-4">
                 <h4 class="text-xl text-textPrimary font-semibold capitalize">social media</h4>
                 <div class="flex gap-4">
                     <a href="#">
-                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out" viewBox="0 0 37 37" fill="none"
-
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out"
+                            viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18.5007 0.740234C8.69202 0.740234 0.740723 8.69154 0.740723 18.5002C0.740723 28.3089 8.69202 36.2602 18.5007 36.2602C28.3094 36.2602 36.2607 28.3089 36.2607 18.5002C36.2607 8.69154 28.3094 0.740234 18.5007 0.740234ZM22.7076 13.0131H20.0381C19.7217 13.0131 19.3702 13.4294 19.3702 13.9825V15.9102H22.7095L22.2044 18.6593H19.3702V26.9122H16.2197V18.6593H13.3614V15.9102H16.2197V14.2933C16.2197 11.9734 17.8292 10.0883 20.0381 10.0883H22.7076V13.0131V13.0131Z"
                                 fill="#FE0000" />
                         </svg>
                     </a>
                     <a href="#">
-                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out" viewBox="0 0 37 37" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out"
+                            viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18.5007 0.740234C8.69202 0.740234 0.740723 8.69154 0.740723 18.5002C0.740723 28.3089 8.69202 36.2602 18.5007 36.2602C28.3094 36.2602 36.2607 28.3089 36.2607 18.5002C36.2607 8.69154 28.3094 0.740234 18.5007 0.740234ZM25.725 15.2886C25.7324 15.4403 25.7342 15.592 25.7342 15.74C25.7342 20.365 22.2174 25.6949 15.7831 25.6949C13.8818 25.698 12.0201 25.152 10.4218 24.1224C10.6937 24.1557 10.9731 24.1686 11.2561 24.1686C12.8952 24.1686 14.403 23.6118 15.5999 22.672C14.8705 22.6577 14.1637 22.4161 13.5781 21.981C12.9924 21.546 12.5571 20.939 12.3328 20.2448C12.8567 20.3444 13.3963 20.3235 13.9109 20.1837C13.1192 20.0236 12.4072 19.5947 11.8957 18.9695C11.3842 18.3444 11.1046 17.5616 11.1044 16.7538V16.7113C11.5762 16.9721 12.1164 17.1312 12.6899 17.1497C11.9476 16.6557 11.4222 15.8967 11.2211 15.028C11.0199 14.1594 11.1582 13.2467 11.6076 12.4766C12.4863 13.557 13.5821 14.4409 14.824 15.0709C16.0659 15.701 17.4263 16.0632 18.8171 16.1341C18.6403 15.3836 18.7164 14.5956 19.0335 13.8928C19.3507 13.19 19.8912 12.6117 20.571 12.2477C21.2508 11.8838 22.0318 11.7546 22.7925 11.8803C23.5533 12.006 24.2512 12.3796 24.7778 12.9428C25.5606 12.7879 26.3114 12.5008 26.9978 12.0937C26.7369 12.9042 26.1906 13.5925 25.4604 14.0306C26.1539 13.9471 26.831 13.7607 27.4695 13.4775C27.0005 14.1803 26.4097 14.7936 25.725 15.2886V15.2886Z"
                                 fill="#FE0000" />
                         </svg>
                     </a>
                     <a href="#">
-                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out" viewBox="0 0 37 37" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out"
+                            viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M21.4663 18.1913L17.3112 16.2525C16.9486 16.0841 16.6507 16.2728 16.6507 16.6743V20.3262C16.6507 20.7276 16.9486 20.9163 17.3112 20.748L21.4644 18.8092C21.8289 18.639 21.8289 18.3615 21.4663 18.1913ZM18.5007 0.740234C8.69202 0.740234 0.740723 8.69154 0.740723 18.5002C0.740723 28.3089 8.69202 36.2602 18.5007 36.2602C28.3094 36.2602 36.2607 28.3089 36.2607 18.5002C36.2607 8.69154 28.3094 0.740234 18.5007 0.740234ZM18.5007 25.7152C9.40982 25.7152 9.25072 24.8957 9.25072 18.5002C9.25072 12.1048 9.40982 11.2852 18.5007 11.2852C27.5916 11.2852 27.7507 12.1048 27.7507 18.5002C27.7507 24.8957 27.5916 25.7152 18.5007 25.7152Z"
                                 fill="#FE0000" />
                         </svg>
                     </a>
                     <a href="#">
-                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out" viewBox="0 0 37 37" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-12 h-12 max-md:h-10 max-md:w-10 hover:opacity-80 transition-all duration-300 ease-in-out"
+                            viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18.9885 18.4662C19.0505 18.4437 19.1162 18.4268 19.1819 18.408C19.0153 18.0388 18.8407 17.6733 18.6581 17.3118C15.1292 18.3573 11.7505 18.3667 11.1479 18.3573C11.1423 18.4042 11.1423 18.4531 11.1423 18.5C11.1423 20.2738 11.7805 21.9782 12.9405 23.3166C13.3272 22.6934 15.377 19.6356 18.9885 18.4662ZM14.0386 24.3433C15.0596 25.1257 16.2681 25.6263 17.5433 25.795C18.8185 25.9636 20.1156 25.7945 21.3048 25.3044C20.96 23.4326 20.4435 21.5966 19.7619 19.8196C15.7806 21.2274 14.277 23.8778 14.0386 24.3433V24.3433ZM23.2964 12.9194C22.4288 12.1741 21.3994 11.6414 20.2899 11.3634C19.1804 11.0855 18.0214 11.07 16.9049 11.3183C17.8846 12.6492 18.7756 14.0431 19.5723 15.491C21.9806 14.5656 23.0693 13.231 23.2964 12.9194V12.9194ZM17.9467 15.9922C17.1377 14.5735 16.251 13.2005 15.2907 11.8795C14.2992 12.3626 13.4284 13.0614 12.7421 13.9247C12.0558 14.788 11.5714 15.794 11.3244 16.8688H11.3563C12.1184 16.8688 14.827 16.8069 17.9467 15.9922ZM21.3424 19.431C22.2152 21.8581 22.6169 23.8741 22.7314 24.5198C24.3311 23.3919 25.4175 21.675 25.7516 19.7464C24.7796 19.4703 23.7738 19.3307 22.7633 19.3315C22.279 19.3315 21.8004 19.3653 21.3424 19.431V19.431ZM18.5005 0.47998C8.54817 0.47998 0.480469 8.54769 0.480469 18.5C0.480469 28.4523 8.54817 36.52 18.5005 36.52C28.4528 36.52 36.5205 28.4523 36.5205 18.5C36.5205 8.54769 28.4528 0.47998 18.5005 0.47998ZM18.5005 27.3166C16.1624 27.3147 13.9206 26.3852 12.267 24.7323C10.6134 23.0794 9.68304 20.838 9.68005 18.5C9.68204 16.1613 10.612 13.9189 12.2657 12.2652C13.9194 10.6115 16.1618 9.68155 18.5005 9.67957C20.8387 9.68255 23.0803 10.6129 24.7335 12.2664C26.3867 13.92 27.3165 16.1617 27.319 18.5C27.3165 20.8379 26.3866 23.0793 24.7333 24.7322C23.0799 26.3852 20.8384 27.3147 18.5005 27.3166ZM20.2311 16.7618C20.3944 17.0997 20.5465 17.4319 20.6854 17.7585L20.8187 18.0776C21.3386 18.0157 21.8942 17.9857 22.4743 17.9857C23.6087 17.9879 24.7405 18.096 25.8549 18.3085C25.812 16.7097 25.2507 15.1682 24.2556 13.9161C23.9553 14.3028 22.7202 15.7238 20.2311 16.7618V16.7618Z"
                                 fill="#FE0000" />

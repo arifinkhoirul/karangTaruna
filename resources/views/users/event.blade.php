@@ -128,7 +128,7 @@
                 </a>
             </nav> --}}
 
-            {{-- ? buttin --}}
+            {{-- ? button --}}
             <div class="text-center ">
                 <a href="{{ route('user.blog') }}"
                     class=" animate-bounce inline-block px-6 py-3 mt-4 capitalize text-xs lg:px-8 lg:py-4 md:text-sm

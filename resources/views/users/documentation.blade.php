@@ -26,7 +26,7 @@
             {{-- ? card --}}
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card looping --}}
-                @for ($i = 0; $i < 3; $i++)
+                @for ($i = 0; $i < 6; $i++)
                     <a href="{{ route('user.blog') }}"
                         class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
@@ -63,9 +63,9 @@
             </div>
 
             {{-- ? pagination --}}
-            <nav class="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {{-- <nav class="flex flex-wrap items-center justify-center gap-2 mt-8"> --}}
                 {{-- ? Prev --}}
-                <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -75,10 +75,10 @@
                                 stroke="#FE0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                     </span>
-                </a>
+                </a> --}}
 
                 {{-- ? number page --}}
-                <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
+                {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
                     href="javascript:;" aria-current="page">1</a>
 
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg bg-primary text-white inline-flex items-center justify-center rounded-full transition-all duration-150 hover:bg-primary hover:text-white"
@@ -88,10 +88,10 @@
                     href="javascript:;">...</a>
 
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
-                    href="javascript:;">10</a>
+                    href="javascript:;">10</a> --}}
 
                 {{-- ? next --}}
-                <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -101,8 +101,19 @@
                                 stroke="#FE0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                     </span>
-                </a>
-            </nav>
+                </a> --}}
+            {{-- </nav> --}}
+
+            {{-- ? button --}}
+            <div class="text-center ">
+                <a href="{{ route('user.blog') }}"
+                    class=" animate-bounce inline-block px-6 py-3 mt-4 capitalize text-xs lg:px-8 lg:py-4 md:text-sm
+                        text-bg1 border border-primary bg-primary
+                        hover:bg-red-700 hover:border-red-700 hover:text-bg1 hover:scale-105
+                        transition-all duration-300 ease-in-out
+                        rounded-lg font-medium tracking-wide cursor-pointer
+                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load more</a>
+            </div>
         </div>
     </section>
 @endsection
