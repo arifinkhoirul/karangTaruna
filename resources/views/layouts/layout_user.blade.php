@@ -28,7 +28,7 @@
     </style> --}}
 
     <style>
-        .animate-scroll:hover {
+        .logo-slider:hover .animate-infinite-scroll {
             animation-play-state: paused;
         }
     </style>
@@ -234,10 +234,30 @@
                     </ul>
                 </div>
 
-                {{-- ? button login --}}
+                {{-- ? button login yang sudah login dan blm login --}}
                 <div class="flex gap-3 max-md:gap-2">
+
+
+                    {{-- ? ketika sudah login --}}
+                    <div class="relative hidden">
+                        {{-- ? gambar profile --}}
+                        <button id="profileBtn" class="w-12 h-12 rounded-full overflow-hidden border border-primary">
+                            <img src="{{ asset('logo-karangtaruna.png') }}" alt="profile" class="w-full h-full object-cover">
+                        </button>
+
+                        {{-- ? dropdown menu profile --}}
+                        <div id="profileMenu" class="absolute p-4 flex flex-col gap-3 right-0 bg-bg1 capitalize w-48 mt-3 text-textSecondary rounded-lg shadow-lg">
+                            <a href="#" class="flex gap-3 px-4 py-2 hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out rounded-lg"><i class="ri-user-5-fill"></i> edit profile</a>
+                            <form method="POST" action="#" class="">
+                                <button type="submit" class="w-full flex gap-3 px-4 py-2 rounded-lg hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out"><i class="ri-logout-circle-r-line"></i> logout</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- ? ketika belum login --}}
                     <div class="flex gap-3 max-md-gap-2">
-                        <a href='{{ route('login') }}' class="px-5 py-2 text-xs capitalize rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">
+                        <a href='{{ route('login') }}'
+                            class="px-5 py-2 text-xs capitalize rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">
                             login
                         </a>
                         <a href='{{ route('register') }}'

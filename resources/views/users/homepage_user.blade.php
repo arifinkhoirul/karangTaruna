@@ -114,33 +114,58 @@
 
     {{-- ? sponsor --}}
     <section class="max-w-screen-3xl mx-auto flex flex-col py-20 px-4 max-md:py-10 sm:px-10">
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-8 max-md:gap-6">
             <h1
-                class="text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
+                class="text-4xl max-md:text-3xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
                 sponsor</h1>
             {{-- ? container sponsor --}}
-            <div class="relative w-full overflow-hidden bg-bg1 py-3">
-                <!-- Track -->
-                <div class="flex  gap-10 w-max animate-scroll">
-                    <!-- Set 1 -->
-                    <img src="{{ asset('sponsor/logo_1.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_2.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_3.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_4.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_5.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_6.png') }}" class="h-30 w-auto" alt="sponsor">
-
-                    <!-- Set 2 (copy biar mulus) -->
-                    <img src="{{ asset('sponsor/logo_1.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_2.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_3.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_4.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_5.png') }}" class="h-30 w-auto" alt="sponsor">
-                    <img src="{{ asset('sponsor/logo_6.png') }}" class="h-30 w-auto" alt="sponsor">
-                </div>
+            <div
+                class="w-full inline-flex flex-nowrap overflow-hidden 
+                [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] 
+                [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-slider">
+                <ul
+                    class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+                    <li>
+                        <img src="{{ asset('sponsor/logo_1.png') }}" alt="Facebook" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_2.png') }}" alt="Disney" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_3.png') }}" alt="Airbnb" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_4.png') }}" alt="Apple" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_5.png') }}" alt="Spark" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_6.png') }}" alt="Samsung" />
+                    </li>
+                </ul>
+                <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+                    aria-hidden="true">
+                    <li>
+                        <img src="{{ asset('sponsor/logo_1.png') }}" alt="Facebook" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_2.png') }}" alt="Disney" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_3.png') }}" alt="Airbnb" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_4.png') }}" alt="Apple" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_5.png') }}" alt="Spark" />
+                    </li>
+                    <li>
+                        <img src="{{ asset('sponsor/logo_6.png') }}" alt="Samsung" />
+                    </li>
+                </ul>
             </div>
-
-
         </div>
     </section>
 

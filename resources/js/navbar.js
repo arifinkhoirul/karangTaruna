@@ -41,3 +41,16 @@
                 pagesArrow.classList.remove("rotate-180");
             }
         });
+
+        // ? menu profile yang sudah login
+        const profileBtn = document.getElementById('profileBtn');
+        const profileMenu = document.getElementById('profileMenu');
+
+        profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            profileMenu.classList.add('hidden');
+        });
