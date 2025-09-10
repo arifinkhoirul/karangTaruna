@@ -27,12 +27,6 @@
         }
     </style> --}}
 
-    <style>
-        .logo-slider:hover .animate-infinite-scroll {
-            animation-play-state: paused;
-        }
-    </style>
-
     {{-- ? tailwind css via vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

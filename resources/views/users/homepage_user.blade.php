@@ -7,26 +7,29 @@
             {{-- ? Carousel wrapper --}}
             <div class="relative h-[600px] overflow-hidden rounded-lg max-2xl:h-[400px] max-md:h-[220px] ">
                 {{-- ? looping --}}
-                @for ($i = 0; $i < 5; $i++)
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('uploads/banner/Frame 3.jpg') }}"
-                            class="block w-full h-full object-cover object-center" alt="...">
-                    </div>
-                @endfor
+                @foreach ($mainImages as $mainImage)
+                    @if ($mainImage->status == 'aktif')
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="{{ asset($mainImage->image) }}"
+                                class="block w-full h-full object-cover object-center" alt="...">
+                        </div>
+                    @endif
+                @endforeach
             </div>
+
             {{-- ? Slider indicators --}}
             <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                    data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                    data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                    data-carousel-slide-to="2"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                    data-carousel-slide-to="3"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-                    data-carousel-slide-to="4"></button>
+                @foreach ($mainImages as $mainImage)
+                    @if ($mainImage->status == 'aktif')
+                        <button type="button" class="w-3 h-3 rounded-full"
+                            aria-current="{{ $loop->first ? 'true' : 'false' }}" aria-label="Slide {{ $loop->iteration }}"
+                            data-carousel-slide-to="{{ $loop->index }}">
+                        </button>
+                    @endif
+                @endforeach
             </div>
+
+
             {{-- ? Slider controls --}}
             <button type="button"
                 class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -70,7 +73,7 @@
             </div>
             {{-- ? text visi misi --}}
             <div class="flex flex-col gap-5">
-                <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-3 max-md:gap-2">
                     <h1 class="text-textPrimary text-4xl max-lg:text-3xl capitalize font-bold leading-snug">
                         visi & misi</h1>
                     <div class="h-1 w-20 bg-primary rounded-full"></div>
@@ -115,8 +118,7 @@
     {{-- ? sponsor --}}
     <section class="max-w-screen-3xl mx-auto flex flex-col py-20 px-4 max-md:py-10 sm:px-10">
         <div class="flex flex-col gap-8 max-md:gap-6">
-            <h1
-                class="text-4xl max-md:text-3xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
+            <h1 class="text-4xl max-md:text-3xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
                 sponsor</h1>
             {{-- ? container sponsor --}}
             <div

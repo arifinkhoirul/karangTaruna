@@ -35,13 +35,8 @@ export default {
                     transform: 'translateY(0)',
                     animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
                     },
-                },
-            },
-            animation: {
-                scroll: 'scroll 30s linear infinite',
-                wiggle : 'wiggle 0.5s ease-in-out infinite',
-                bounce : 'bouncex 1s infinite',
-            },
+                },        
+            },     
             screens: {
                 sm: "575px",
                 md: "765px",

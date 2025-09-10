@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\CashBook;
 use App\Models\Documentation;
 use App\Models\Event;
+use App\Models\MainImage;
 use App\Models\Member;
 use App\Models\PengeluaranKas;
 use App\Models\Teenager;
@@ -13,9 +14,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    
     public function homepage() {
         $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('users.homepage_user', compact('blogs'));
+        $mainImages = MainImage::all();
+        return view('users.homepage_user', compact('blogs', 'mainImages'));
     }
 
 
@@ -37,7 +40,7 @@ class UserController extends Controller
 
     // blog-----------------------------------------------------------
     public function blog() {
-        $blogs = Blog::all();
+        $blogs = Blog::take(9)->get();
 
         return view('users.blog', compact('blogs'));
     }

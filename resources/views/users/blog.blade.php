@@ -3,7 +3,7 @@
 
 
 @section('user_content')
-    <section class="max-w-screen-3xl mx-auto flex flex-col pt-32 pb-20 px-4 max-md:pt-28 sm:px-10">
+    <section class="default-section">
         <div class="flex flex-col gap-8">
             {{-- ? text baca blog --}}
             <div class="flex flex-col gap-2 max-md:gap-2">

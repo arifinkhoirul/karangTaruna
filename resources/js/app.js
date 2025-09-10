@@ -1,5 +1,6 @@
 import './bootstrap';
-import './navbar'
+import './navbar';
+import './popup';
 import 'flowbite';
 import 'remixicon/fonts/remixicon.css';
 
