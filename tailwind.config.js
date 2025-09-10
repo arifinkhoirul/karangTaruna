@@ -12,10 +12,15 @@ export default {
 
     theme: {
         extend: {
+            animation: {
+                'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                wiggle : 'wiggle 0.5s ease-in-out infinite',
+                bounce : 'bouncex 1s infinite',
+            },
             keyframes: {
-                scroll: {
-                    '0%': { transform: 'translateX(0)' },
-                    '100%': { transform: 'translateX(-50%)' },
+                'infinite-scroll': {
+                        from: { transform: 'translateX(0)' },
+                        to: { transform: 'translateX(-100%)' },
                 },
                 wiggle : {
                     '0%, 100%': { transform: 'rotate(-0.5deg)' },
@@ -31,12 +36,7 @@ export default {
                     animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
                     },
                 },        
-            },
-            animation: {
-                scroll: 'scroll 30s linear infinite',
-                wiggle : 'wiggle 0.5s ease-in-out infinite',
-                bounce : 'bouncex 1s infinite',
-            },
+            },     
             screens: {
                 sm: "575px",
                 md: "765px",
