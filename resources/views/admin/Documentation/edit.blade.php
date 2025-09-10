@@ -15,6 +15,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label for="judul_dokumentasi" class="form-label">Judul Dokumentasi</label>
+                            <input type="text" class="form-control" id="judul_dokumentasi" name="judul_dokumentasi" value="{{ old('judul_dokumentasi', $documentation->judul_dokumentasi) }}">
+                            @error('judul_dokumentasi')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="image" class="form-label">Upload Gambar</label>
                             <input class="form-control" type="file" id="image" name="image">
                             @error('image')
@@ -23,15 +31,15 @@
                         </div>
 
                         <!-- Preview Gambar -->
-                        <div class="mt-2">
+                        <div class="mt-2 mb-3">
                             <img id="previewImage" src="{{ asset($documentation->image) }}" alt="Preview Gambar"
                                 style="max-height: 200px;" class="img-fluid rounded border">
                         </div>
 
                         <div class="mb-3">
                             <label for="link" class="form-label fw-bold">Link</label>
-                            <input type="text" class="form-control" id="link" value="{{ old('link', $documentation->link) }}"
-                                name="link" placeholder="Masukkan link">
+                            <input type="text" class="form-control" id="link"
+                                value="{{ old('link', $documentation->link) }}" name="link" placeholder="Masukkan link">
                             @error('link')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror

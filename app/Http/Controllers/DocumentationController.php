@@ -18,10 +18,12 @@ class DocumentationController extends Controller
     public function store(Request $request) {
         $validated = $request->validate(
             [
+                'judul_dokumentasi' => 'required',
                 'image' => 'required',
                 'link' => 'required',
             ],
             [
+                'judul_dokumentasi.required' => 'masukkan data dengan benar',
                 'image.required' => 'masukkan data dengan benar',
                 'link.required' => 'masukkan data dengan benar',
             ],
@@ -58,9 +60,11 @@ class DocumentationController extends Controller
         $documentation = Documentation::find($id);
         $validated = $request->validate(
             [
+                'judul_dokumentasi' => 'required',
                 'link' => 'required',
             ],
             [
+                'judul_dokumentasi.required' => 'masukkan data dengan benar',
                 'link.required' => 'masukkan data dengan benar',
             ],
         );

@@ -16,11 +16,29 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="name" value="{{ old('name', $teenager->name) }}"
-                                name="name"  placeholder="Masukkan Nama">
+                            <input type="text" class="form-control" id="name"
+                                value="{{ old('name', $teenager->name) }}" name="name" placeholder="Masukkan Nama">
                             @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <h6>Jenis Kelamin</h6>
+                            <fieldset class="form-group">
+                                <select class="form-select" id="basicSelect" name="jenis_kelamin">
+                                    <option disabled selected hidden>Pilih jenis Kelamin</option>
+                                    <option value="laki-laki"
+                                        {{ old('jenis_kelamin', $teenager->jenis_kelamin) == 'laki-laki' ? 'selected' : '' }}>
+                                        Laki-Laki</option>
+                                    <option value="perempuan"
+                                        {{ old('jenis_kelamin', $teenager->jenis_kelamin) == 'perempuan' ? 'selected' : '' }}>
+                                        Perempuan</option>
+                                </select>
+                                @error('jenis_kelamin')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </fieldset>
                         </div>
 
                         <div class="mb-3">
@@ -32,7 +50,7 @@
                         </div>
 
                         <!-- Preview Gambar -->
-                        <div class="mt-2">
+                        <div class="mt-2 mb-3">
                             <img id="previewImage" src="{{ asset($teenager->image) }}" alt="Preview Gambar"
                                 style="max-height: 200px;" class="img-fluid rounded border">
                         </div>
@@ -49,7 +67,7 @@
 
                         <div class="form-group mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat" rows="3"  placeholder="Masukkan Alamat">{{ old('alamat', $teenager->alamat) }}</textarea>
+                            <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat">{{ old('alamat', $teenager->alamat) }}</textarea>
                             @error('alamat')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -59,7 +77,7 @@
                         <div class="mb-3">
                             <label for="minat_bakat" class="form-label">Minat Bakat</label>
                             <input type="text" class="form-control" id="minat_bakat" placeholder="Masukkan Minat Bakat"
-                                name="minat_bakat" value="{{ old('minat_bakat', $teenager->minat_bakat) }}" >
+                                name="minat_bakat" value="{{ old('minat_bakat', $teenager->minat_bakat) }}">
                             @error('minat_bakat')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -69,8 +87,10 @@
                         <fieldset class="form-group">
                             <select class="form-select" id="basicSelect" name="status">
                                 <option disabled selected hidden>Pilih Staus Remaja</option>
-                                <option value="aktif" {{ old('status', $teenager->status) == 'aktif' ? 'selected' : '' }}>Aktif</option>
-                                <option value="tidak aktif" {{ old('status', $teenager->status) == 'tidak aktif' ? 'selected' : '' }}>Tidak
+                                <option value="aktif" {{ old('status', $teenager->status) == 'aktif' ? 'selected' : '' }}>
+                                    Aktif</option>
+                                <option value="tidak aktif"
+                                    {{ old('status', $teenager->status) == 'tidak aktif' ? 'selected' : '' }}>Tidak
                                     Aktif</option>
                             </select>
                         </fieldset>

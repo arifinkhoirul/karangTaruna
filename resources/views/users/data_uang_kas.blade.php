@@ -14,21 +14,22 @@
                             pemasukan</h1>
                         <div class="h-1 w-20 bg-primary rounded-full"></div>
                     </div>
-    
+
                     {{-- ? print --}}
                     <a href='{{ route('register') }}'
                         class="flex items-center gap-2 capitalize px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">
                         print <i class="ri-printer-fill"></i>
                     </a>
-    
+
                 </div>
-    
+
                 {{-- ? tabel data remaja --}}
                 <div class="max-lg:overflow-x-auto py-3">
                     <table class="w-full max-lg:min-w-[800px] border border-gray-300 border-collapse text-center rounded-xl">
                         <thead>
                             <tr class="bg-primary text-bg1 max-md:text-sm">
-                                <th class="px-4 py-3 capitalize border border-gray-300">tanggal</th>
+                                <th class="px-4 py-3 capitalize border border-gray-300">No</th>
+                                <th class="px-4 py-3 capitalize border border-gray-300">tanggal bayar</th>
                                 <th class="px-4 py-2 capitalize font-medium border border-gray-300">nama</th>
                                 <th class="px-4 py-2 capitalize font-medium border border-gray-300">bulan</th>
                                 <th class="px-4 py-2 capitalize font-medium border border-gray-300">tahun</th>
@@ -37,28 +38,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i = 0; $i < 5; $i++)
+                            @foreach ($pemasukanKas as $pemasukan )
                             <tr class="odd:bg-bg2 even:bg-bg1 text-textPrimary max-md:text-sm">
-                                <td class="px-4 py-3 border border-gray-300">2025-08-29</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">maudy ayunda</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">jan</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">2025</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">Rp200.000</td>
+                                <td class="px-4 py-3 border border-gray-300">{{ $loop->iteration }}</td>
+                                <td class="px-4 py-3 border border-gray-300">{{ \Carbon\Carbon::parse($pemasukan->tanggal_bayar)->format('d F Y') }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">{{ $pemasukan->teenager->name }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">{{ $pemasukan->bulan }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">{{ $pemasukan->tahun }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">Rp {{ number_format($pemasukan->jumlah, '0',',','.') }}</td>
                                 <td
-                                    class="px-4 py-3 font-semibold capitalize border border-gray-300 text-green-600">sudah bayar</td>
+                                    class="px-4 py-3 font-semibold capitalize border border-gray-300 text-green-600">{{ $pemasukan->status }}</td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr class="bg-primary text-bg1 font-medium max-md:text-sm">
-                                <td class="px-4 py-3 text-center border border-gray-300 uppercase" colspan="4">total</td>
-                                <td class="px-4 py-3 border border-gray-300">30</td>
+                                <td class="px-4 py-3 text-center border border-gray-300 uppercase" colspan="5">total</td>
+                                <td class="px-4 py-3 border border-gray-300">Rp {{ number_format( $totalPemasukan ,'0',',',)}}</td>
                                 <td class="px-4 py-3 border border-gray-300"></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-    
+
             </div>
 
             {{-- ? pengeluaran --}}
@@ -70,49 +72,45 @@
                             pengeluaran</h1>
                         <div class="h-1 w-20 bg-primary rounded-full"></div>
                     </div>
-    
+
                     {{-- ? print --}}
                     <a href='{{ route('register') }}'
                         class="flex items-center gap-2 capitalize px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">
                         print <i class="ri-printer-fill"></i>
                     </a>
-    
+
                 </div>
-    
+
                 {{-- ? tabel data remaja --}}
                 <div class="max-lg:overflow-x-auto py-3">
                     <table class="w-full max-lg:min-w-[800px] border border-gray-300 border-collapse text-center rounded-xl">
                         <thead>
                             <tr class="bg-primary text-bg1 max-md:text-sm">
                                 <th class="px-4 py-3 capitalize border border-gray-300">No</th>
-                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Jenis Kelamin</th>
-                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Nama</th>
-                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Minat Bakat</th>
-                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Status Remaja</th>
+                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Tanggal Pengeluaran</th>
+                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Keterangan</th>
+                                <th class="px-4 py-2 capitalize font-medium border border-gray-300">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i = 0; $i < 5; $i++)
+                            @foreach ($pengeluaranKas as $pengeluaran)
                             <tr class="odd:bg-bg2 even:bg-bg1 text-textPrimary max-md:text-sm">
-                                <td class="px-4 py-3 border border-gray-300">1</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">maudy ayunda</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">perempuan</td>
-                                <td class="px-4 py-3 capitalize border border-gray-300">nyanyi</td>
-                                <td
-                                    class="px-4 py-3 font-semibold capitalize border border-gray-300 text-green-600">active</td>
+                                <td class="px-4 py-3 border border-gray-300">{{ $loop->iteration }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">{{ \Carbon\Carbon::parse($pengeluaran->tanggal_pengeluaran)->format('d F Y') }}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">{{  $pengeluaran->keterangan}}</td>
+                                <td class="px-4 py-3 capitalize border border-gray-300">Rp {{ number_format($pengeluaran->jumlah,'0', ',', '.') }}</td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr class="bg-primary text-bg1 font-medium max-md:text-sm">
-                                <td class="px-4 py-3 text-center border border-gray-300 uppercase">total</td>
-                                <td class="px-4 py-3 border border-gray-300">30</td>
-                                <td class="px-4 py-3 border border-gray-300" colspan="3"></td>
+                                <td class="px-4 py-3 text-center border border-gray-300 uppercase" colspan="3">total</td>
+                                <td class="px-4 py-3 border border-gray-300">Rp {{ number_format($totalPengeluaran ,'0',',','.') }}</td>
                             </tr>
                         </tfoot>
                     </table>
+                    <button class="p-4  mt-3 text-white bg-green-600">Sisa Saldo : Rp {{number_format($sisaSaldo,'0',',','.') }}</button>
                 </div>
-    
             </div>
         </div>
     </section>

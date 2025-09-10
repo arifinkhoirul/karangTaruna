@@ -13,7 +13,7 @@
                     <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
                         Temukan cerita seru dari setiap event yang telah berlangsung.</p>
                     <div class="h-1 w-20 bg-primary rounded-full"></div>
-                </div>    
+                </div>
             </div>
 
             {{-- ? gambar slider --}}
@@ -27,21 +27,21 @@
             {{-- ? card --}}
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card looping --}}
-                @for ($i = 0; $i < 5; $i++)
-                    <a href="{{ route('user.blog') }}"
+                @foreach ($events as $event)
+                    <a href="{{ route('user.event.show', $event->id) }}"
                         class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
-                            <img src="{{ asset('uploads/banner/Frame 3.jpg') }}" alt=""
+                            <img src="{{ asset($event->image) }}" alt=""
                                 class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
                         </div>
 
                         {{-- ? deskripsi --}}
                         <div class="flex flex-col gap-4 max-md:gap-3">
-                            <h5 class="text-primary text-base font-semibold uppercase">EVENT 17 AGT</h5>
+                            <h5 class="text-primary text-base font-semibold uppercase">{{ $event->nama_event }}</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
-                                Upacara & Perayaan Hari Kemerdekaan Republik
+                                {{ $event->deskripsi }}
                             </h1>
 
                             {{-- ? tanggal event --}}
@@ -54,7 +54,7 @@
                                 </svg>
 
                                 <p class="text-textSecondary text-base leading-relaxed line-clamp-1 font-light">
-                                    17 Agustus 2025
+                                    {{ \Carbon\Carbon::parse($event->tanggal_mulai)->format('d F Y') }}
                                 </p>
 
                             </div>
@@ -67,10 +67,10 @@
                                     gratis</p>
                                 <p
                                     class="flex items-center gap-3 font-medium rounded-xl bg-primary text-bg1
-                                max-lg:py-2 max-lg:px-6 
+                                max-lg:py-2 max-lg:px-6
                                 py-3 px-7 text-base
                                 max-sm:py-2 max-sm:px-5 max-sm:text-sm
-                                hover:bg-red-700 transition-colors duration-300 
+                                hover:bg-red-700 transition-colors duration-300
                                 ">
                                     view
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </a>
-                @endfor
+                @endforeach
             </div>
 
             {{-- ? pagination --}}

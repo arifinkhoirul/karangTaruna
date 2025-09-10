@@ -14,6 +14,7 @@ class Documentation extends Model
 
     protected $fillable = [
         'user_id',
+        'judul_dokumentasi',
         'image',
         'link',
     ];

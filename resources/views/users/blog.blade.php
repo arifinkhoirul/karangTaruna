@@ -13,7 +13,7 @@
                     <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
                         Simak aktivitas dan kisah inspiratif di blog ini.</p>
                     <div class="h-1 w-20 bg-primary rounded-full"></div>
-                </div>    
+                </div>
             </div>
 
             {{-- ? card --}}
@@ -21,7 +21,7 @@
                 class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card 1 --}}
                 @foreach ($blogs as $blog)
-                    <a href="#"
+                    <a href="{{ route('user.blog.show', $blog->id) }}"
                         class="flex flex-col gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">

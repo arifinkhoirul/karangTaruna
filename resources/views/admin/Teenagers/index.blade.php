@@ -49,6 +49,15 @@
                                     name="name" required placeholder="Masukkan Nama">
                             </div>
 
+                            <h6>Jenis Kelamin</h6>
+                            <fieldset class="form-group">
+                                <select class="form-select" id="basicSelect" name="jenis_kelamin">
+                                    <option disabled selected hidden>Pilih jenis Kelamin</option>
+                                    <option value="laki-laki" {{ old('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                    <option value="prempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                </select>
+                            </fieldset>
+
                             <div class="mb-3">
                                 <label for="image" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="image" name="image">
@@ -126,6 +135,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
+                                <th>Jenis Kelamin</th>
                                 <th>Foto</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Alamat</th>
@@ -139,6 +149,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $teenager->name }}</td>
+                                    <td>{{ $teenager->jenis_kelamin }}</td>
                                     <td>
                                         <img src="{{ asset($teenager->image) }}" alt="{{ $teenager->name }}"
                                             width="80" class="img-thumbnail">

@@ -27,23 +27,23 @@
                     <thead>
                         <tr class="bg-primary text-bg1 max-md:text-sm">
                             <th class="px-4 py-3 capitalize border border-gray-300">No</th>
-                            <th class="px-4 py-2 capitalize font-medium border border-gray-300">Jenis Kelamin</th>
                             <th class="px-4 py-2 capitalize font-medium border border-gray-300">Nama</th>
+                            <th class="px-4 py-2 capitalize font-medium border border-gray-300">Jenis Kelamin</th>
                             <th class="px-4 py-2 capitalize font-medium border border-gray-300">Minat Bakat</th>
                             <th class="px-4 py-2 capitalize font-medium border border-gray-300">Status Remaja</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 0; $i < 5; $i++)
+                        @foreach ($teenagers as $teenager)
                         <tr class="odd:bg-bg2 even:bg-bg1 text-textPrimary max-md:text-sm">
-                            <td class="px-4 py-3 border border-gray-300">1</td>
-                            <td class="px-4 py-3 capitalize border border-gray-300">maudy ayunda</td>
-                            <td class="px-4 py-3 capitalize border border-gray-300">perempuan</td>
-                            <td class="px-4 py-3 capitalize border border-gray-300">nyanyi</td>
+                            <td class="px-4 py-3 border border-gray-300">{{ $loop->iteration }}</td>
+                            <td class="px-4 py-3 capitalize border border-gray-300">{{ $teenager->name }}</td>
+                            <td class="px-4 py-3 capitalize border border-gray-300">{{ $teenager->jenis_kelamin }}</td>
+                            <td class="px-4 py-3 capitalize border border-gray-300">{{ $teenager->minat_bakat }}</td>
                             <td
-                                class="px-4 py-3 font-semibold capitalize border border-gray-300 text-green-600">active</td>
+                                class="px-4 py-3 font-semibold capitalize border border-gray-300 text-green-600">{{ $teenager->status }}</td>
                         </tr>
-                        @endfor
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr class="bg-primary text-bg1 font-medium max-md:text-sm">

@@ -16,6 +16,7 @@ class Teenager extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'jenis_kelamin',
         'image',
         'tanggal_lahir',
         'alamat',

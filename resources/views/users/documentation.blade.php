@@ -12,7 +12,7 @@
                     <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
                         Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
                     <div class="h-1 w-20 bg-primary rounded-full"></div>
-                </div>    
+                </div>
             </div>
 
             {{-- ? gambar slider --}}
@@ -26,12 +26,12 @@
             {{-- ? card --}}
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card looping --}}
-                @for ($i = 0; $i < 6; $i++)
-                    <a href="{{ route('user.blog') }}"
+                @foreach ($documentations as $documentation)
+                    <a href="{{ route('user.documentation.show', $documentation->id) }}"
                         class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
-                            <img src="{{ asset('uploads/banner/Frame 3.jpg') }}" alt=""
+                            <img src="{{ asset($documentation->image) }}" alt=""
                                 class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
                         </div>
 
@@ -40,7 +40,7 @@
                             <h5 class="text-primary text-base font-semibold uppercase">DOKUMENTASI</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
-                                Upacara & Perayaan Hari Kemerdekaan Republik
+                                {{ $documentation->judul_dokumentasi }}
                             </h1>
 
                             {{-- ? tanggal event --}}
@@ -53,19 +53,19 @@
                                 </svg>
 
                                 <p class="text-textSecondary text-base leading-relaxed line-clamp-1 font-light">
-                                    17 Agustus 2025
+                                    {{ \Carbon\Carbon::parse($documentation->created_at)->format('d F Y') }}
                                 </p>
 
                             </div>
                         </div>
                     </a>
-                @endfor
+                @endforeach
             </div>
 
             {{-- ? pagination --}}
             {{-- <nav class="flex flex-wrap items-center justify-center gap-2 mt-8"> --}}
-                {{-- ? Prev --}}
-                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+            {{-- ? Prev --}}
+            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -77,8 +77,8 @@
                     </span>
                 </a> --}}
 
-                {{-- ? number page --}}
-                {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
+            {{-- ? number page --}}
+            {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
                     href="javascript:;" aria-current="page">1</a>
 
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg bg-primary text-white inline-flex items-center justify-center rounded-full transition-all duration-150 hover:bg-primary hover:text-white"
@@ -90,8 +90,8 @@
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
                     href="javascript:;">10</a> --}}
 
-                {{-- ? next --}}
-                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+            {{-- ? next --}}
+            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -112,7 +112,8 @@
                         hover:bg-red-700 hover:border-red-700 hover:text-bg1 hover:scale-105
                         transition-all duration-300 ease-in-out
                         rounded-lg font-medium tracking-wide cursor-pointer
-                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load more</a>
+                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load
+                    more</a>
             </div>
         </div>
     </section>

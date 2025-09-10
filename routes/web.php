@@ -29,15 +29,31 @@ Route::get('/dashboard', function () {
 
 Route::get('/', [UserController::class, 'homepage'])->name('user.homepage');
 
+
+
 Route::get('/pengurus', [UserController::class, 'pengurus'])->name('user.pengurus');
+Route::get('/pengurus/show/{id}', [UserController::class, 'showPengurus'])->name('user.pengurus.show');
+
+
 
 Route::get('/blogs', [UserController::class, 'blog'])->name('user.blog');
+Route::get('/blogs/show/{id}', [UserController::class, 'showBlog'])->name('user.blog.show');
+
+
 
 Route::get('/events', [UserController::class, 'event'])->name('user.event');
+Route::get('/events/show/{id}', [UserController::class, 'showEvent'])->name('user.event.show');
+
+
 
 Route::get('/documentations', [UserController::class, 'documentations'])->name('user.documentation');
+Route::get('/documentations/show/{id}', [UserController::class, 'showDocumentations'])->name('user.documentation.show');
+
+
 
 Route::get('/data-remaja', [UserController::class, 'dataRemaja'])->name('user.data-remaja');
+
+
 
 Route::get('/data-uang-kas', [UserController::class, 'dataUangKas'])->name('user.data-uang-kas');
 

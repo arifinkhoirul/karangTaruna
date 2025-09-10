@@ -19,6 +19,7 @@ class TeenagerController extends Controller
             [
                 'name' => 'required',
                 // 'image' => 'required',
+                'jenis_kelamin' => 'required',
                 'tanggal_lahir' => 'required',
                 'alamat' => 'required',
                 'minat_bakat' => 'required',
@@ -27,6 +28,7 @@ class TeenagerController extends Controller
             [
                 'name.required' => 'masukkan data dengan benar',
                 // 'image.required' => 'masukkan data dengan benar',
+                'jenis_kelamin.required' => 'masukkan data dengan benar',
                 'tanggal_lahir.required' => 'masukkan data dengan benar',
                 'alamat.required' => 'masukkan data dengan benar',
                 'minat_bakat.required' => 'masukkan data dengan benar',
@@ -66,6 +68,7 @@ class TeenagerController extends Controller
         $validated = $request->validate(
             [
                 'name' => 'required',
+                'jenis_kelamin' => 'required',
                 'tanggal_lahir' => 'required',
                 'alamat' => 'required',
                 'minat_bakat' => 'required',
@@ -73,6 +76,7 @@ class TeenagerController extends Controller
             ],
             [
                 'name.required' => 'masukkan data dengan benar',
+                'jenis_kelamin.required' => 'masukkan data dengan benar',
                 'tanggal_lahir.required' => 'masukkan data dengan benar',
                 'alamat.required' => 'masukkan data dengan benar',
                 'minat_bakat.required' => 'masukkan data dengan benar',

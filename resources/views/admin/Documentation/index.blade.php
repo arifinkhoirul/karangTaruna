@@ -45,6 +45,11 @@
                         <div class="modal-body">
 
                             <div class="mb-3">
+                                <label for="judul_dokumentasi" class="form-label">Judul Dokumentasi</label>
+                                <input type="text" class="form-control" id="judul_dokumentasi" name="judul_dokumentasi" required>
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="image" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="image" name="image" required>
 
@@ -97,6 +102,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Judul Dokumentasi</th>
                                 <th>Gambar</th>
                                 <th>Link</th>
                                 <th>Action</th>
@@ -106,6 +112,9 @@
                             @foreach ($documentations as $documentation)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        {{ $documentation->judul_dokumentasi }}
+                                    </td>
                                     <td>
                                         <img src="{{ asset($documentation->image) }}" alt="banner" width="80"
                                             class="img-thumbnail">
