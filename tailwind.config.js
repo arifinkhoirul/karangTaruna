@@ -6,8 +6,8 @@ export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-        "./node_modules/flowbite/**/*.js"
+        './resources/views/*/.blade.php',
+        "./node_modules/flowbite/*/.js"
     ],
 
     theme: {
@@ -36,11 +36,6 @@ export default {
                     animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
                     },
                 },
-            },
-            animation: {
-                scroll: 'scroll 30s linear infinite',
-                wiggle : 'wiggle 0.5s ease-in-out infinite',
-                bounce : 'bouncex 1s infinite',
             },
             screens: {
                 sm: "575px",

@@ -20,12 +20,9 @@
 
 
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable.css') }}">
-    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app-dark.css') }}">
 
     {{-- flatpicker --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 
 
 </head>
@@ -190,6 +187,13 @@
             allowInput: true
         })
     </script>
+
+    {{-- Ini penting: init AOS setelah semua script Mazer --}}
+    <script type="module">
+        import AOS from 'aos';
+        AOS.init();
+    </script>
+
 </body>
 
 </html>

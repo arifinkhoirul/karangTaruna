@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'aos/dist/aos.css';
 
 /* indikator aktif */
 [data-carousel-slide-to][aria-current="true"] {

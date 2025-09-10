@@ -120,8 +120,8 @@
                 sponsor</h1>
             {{-- ? container sponsor --}}
             <div
-                class="w-full inline-flex flex-nowrap overflow-hidden 
-                [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] 
+                class="w-full inline-flex flex-nowrap overflow-hidden
+                [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]
                 [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-slider">
                 <ul
                     class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
