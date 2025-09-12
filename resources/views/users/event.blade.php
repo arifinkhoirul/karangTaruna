@@ -6,18 +6,22 @@
     <section class="default-section">
         <div class="flex flex-col gap-8">
             {{-- ? text baca blog --}}
-            <div class="flex flex-col gap-2 max-md:gap-2">
-                <h1 class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug">
+            <div class="flex flex-col gap-2 max-md:gap-2 overflow-hidden">
+                <h1
+                    class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug animate__animated animate__fadeInUp animate__faster">
                     Event</h1>
                 <div class="flex flex-col gap-4 max-md:gap-2">
-                    <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
+                    <p
+                        class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed animate__animated animate__fadeInUp">
+                        Jadilah
                         Temukan cerita seru dari setiap event yang telah berlangsung.</p>
-                    <div class="h-1 w-20 bg-primary rounded-full"></div>
+                    <div class="h-1 w-20 bg-primary rounded-full animate__animated animate__fadeInLeft"></div>
                 </div>
             </div>
 
             {{-- ? gambar slider --}}
-            <div class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-lg">
+            <div
+                class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-lg animate__animated animate__zoomIn">
                 <img class="w-full h-full object-cover object-center" src="{{ asset('uploads/banner/Frame 3.jpg') }}"
                     alt="">
             </div>
@@ -25,11 +29,15 @@
 
 
             {{-- ? card --}}
-            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
+            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6">
                 {{-- ? card looping --}}
-                @foreach ($events as $event)
+                @foreach ($events as $index => $event)
+                <div class="animate__animated animate__fadeInUpShort" style="animation-delay: {{ $index * 0.2 }}s">
                     <a href="{{ route('user.event.show', $event->id) }}"
-                        class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                        class="flex flex-col h-full gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 
+                        shadow-[0_8px_30px_rgba(0,0,0,0.04)] 
+                        group transition-all duration-300 ease-in-out 
+                        hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset($event->image) }}" alt=""
@@ -83,13 +91,14 @@
                             </div>
                         </div>
                     </a>
+                </div>
                 @endforeach
             </div>
 
             {{-- ? pagination --}}
             {{-- <nav class="flex flex-wrap items-center justify-center gap-2 mt-8"> --}}
-                {{-- ? Prev --}}
-                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+            {{-- ? Prev --}}
+            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -101,8 +110,8 @@
                     </span>
                 </a> --}}
 
-                {{-- ? number page --}}
-                {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
+            {{-- ? number page --}}
+            {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
                     href="javascript:;" aria-current="page">1</a>
 
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg bg-primary text-white inline-flex items-center justify-center rounded-full transition-all duration-150 hover:bg-primary hover:text-white"
@@ -114,8 +123,8 @@
                 <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
                     href="javascript:;">10</a> --}}
 
-                {{-- ? next --}}
-                {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
+            {{-- ? next --}}
+            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
                     <span
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -136,7 +145,8 @@
                         hover:bg-red-700 hover:border-red-700 hover:text-bg1 hover:scale-105
                         transition-all duration-300 ease-in-out
                         rounded-lg font-medium tracking-wide cursor-pointer
-                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load more</a>
+                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load
+                    more</a>
             </div>
         </div>
     </section>

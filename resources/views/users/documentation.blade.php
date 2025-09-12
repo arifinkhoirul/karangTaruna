@@ -5,18 +5,17 @@
     <section class="default-section">
         <div class="flex flex-col gap-8">
             {{-- ? text baca blog --}}
-            <div class="flex flex-col gap-2 max-md:gap-2">
-                <h1 class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug">
+            <div class="flex flex-col gap-2 max-md:gap-2 overflow-hidden">
+                <h1 class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug animate__animated animate__fadeInUp animate__faster">
                     Dokumentasi</h1>
                 <div class="flex flex-col gap-4 max-md:gap-2">
-                    <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed">Jadilah
-                        Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
-                    <div class="h-1 w-20 bg-primary rounded-full"></div>
+                    <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed animate__animated animate__fadeInUp">Yuk Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
+                    <div class="h-1 w-20 bg-primary rounded-full animate__animated animate__fadeInLeft"></div>
                 </div>
             </div>
 
             {{-- ? gambar slider --}}
-            <div class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-lg">
+            <div class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-lg animate__animated animate__zoomIn">
                 <img class="w-full h-full object-cover object-center" src="{{ asset('uploads/banner/Frame 3.jpg') }}"
                     alt="">
             </div>
@@ -24,11 +23,12 @@
 
 
             {{-- ? card --}}
-            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
+            <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6">
                 {{-- ? card looping --}}
-                @foreach ($documentations as $documentation)
+                @foreach ($documentations as $index => $documentation)
+                <div class="animate__animated animate__fadeInUpShort" style="animation-delay: {{ $index * 0.2 }}s">
                     <a href="{{ route('user.documentation.show', $documentation->id) }}"
-                        class="flex flex-col gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                        class="flex flex-col h-full gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset($documentation->image) }}" alt=""
@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     </a>
+                </div>
                 @endforeach
             </div>
 

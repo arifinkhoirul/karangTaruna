@@ -9,9 +9,9 @@
                 {{-- ? looping --}}
                 @foreach ($mainImages as $mainImage)
                     @if ($mainImage->status == 'aktif')
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset($mainImage->image) }}"
-                                class="block w-full h-full object-cover object-center" alt="...">
+                        <div class="hidden duration-700 ease-in-out animate__animated animate__fadeIn" data-carousel-item>
+                            <img src="{{ asset($mainImage->image) }}" class="block w-full h-full object-cover object-center"
+                                alt="...">
                         </div>
                     @endif
                 @endforeach
@@ -63,16 +63,16 @@
 
     {{-- ? visi & misi --}}
     <section class="max-w-screen-3xl mx-auto flex flex-col py-20 px-4 max-md:py-10 sm:px-10">
-        <div class="grid grid-cols-2 gap-12 max-sm:grid-cols-1 max-md:gap-8">
+        <div class="grid grid-cols-2 gap-12 max-sm:grid-cols-1 max-md:gap-8 overflow-hidden">
             {{-- ? gambar --}}
-            <div class="relative bg-cover bg-center rounded-lg group h-[400px] max-sm:h-[150px]"
+            <div class="relative bg-cover bg-center rounded-lg group h-[400px] max-sm:h-[150px] animate__animated animate__fadeInLeft"
                 style="background-image: url('{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}')">
                 <div
                     class="absolute inset-0 bg-primary/50 group-hover:bg-transparent transition-all duration-500 ease-in-out rounded-lg">
                 </div>
             </div>
             {{-- ? text visi misi --}}
-            <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-5 animate__animated animate__fadeInRight">
                 <div class="flex flex-col gap-3 max-md:gap-2">
                     <h1 class="text-textPrimary text-4xl max-lg:text-3xl capitalize font-bold leading-snug">
                         visi & misi</h1>
@@ -95,78 +95,54 @@
                 {{-- ? box 1 --}}
                 <div class="flex flex-col gap-4">
                     <h1
-                        class="text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug max-md:text-center">
-                        We Need Sponsors!</h1>
-                    <p class="text-lg font-light max-lg:text-base leading-relaxed max-md:text-center">Jadilah
-                        sponsor kami dan ikut berkontribusi menciptakan dampak positif</p>
+                        class="text-4xl max-lg:text-3xl max-md:text-2xl capitalize font-bold leading-snug max-md:text-center
+                        animate__animated animate__fadeInDown ">
+                        We Need Sponsors!
+                    </h1>
+                    <p
+                        class="text-lg font-light max-lg:text-base leading-relaxed max-md:text-center 
+                        animate__animated animate__fadeInUp animate__fast">
+                        Jadilah sponsor kami dan ikut berkontribusi menciptakan dampak positif
+                    </p>
                 </div>
                 {{-- ? box 2 --}}
                 <div>
                     <a href="#"
-                        class="px-6 py-3 text-xs lg:px-8 lg:py-4 md:text-sm
-                        text-primary border border-primary bg-bg1
+                        class="px-6 block py-3 text-xs lg:px-8 lg:py-4 md:text-sm
                         hover:bg-primary hover:text-bg1 hover:border-bg1 shadow-lg hover:scale-105
                         transition-all duration-300 ease-in-out
                         rounded-lg font-medium tracking-wide cursor-pointer
-                        focus:ring-2 focus:ring-primary/50">Kontak
-                        disini</a>
+                        focus:ring-2 focus:ring-primary/50
+                        text-primary border border-primary bg-bg1
+                        animate__animated animate__zoomIn">
+                        Kontak disini
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
+
     {{-- ? sponsor --}}
     <section class="max-w-screen-3xl mx-auto flex flex-col py-20 px-4 max-md:py-10 sm:px-10">
-        <div class="flex flex-col gap-8 max-md:gap-6">
+        <div class="flex flex-col gap-14 max-md:gap-8">
             <h1 class="text-4xl max-md:text-3xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
-                sponsor</h1>
+                sponsor
+            </h1>
+
             {{-- ? container sponsor --}}
             <div
-                class="w-full inline-flex flex-nowrap overflow-hidden 
-                [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] 
-                [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-slider">
-                <ul
-                    class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
-                    <li>
-                        <img src="{{ asset('sponsor/logo_1.png') }}" alt="Facebook" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_2.png') }}" alt="Disney" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_3.png') }}" alt="Airbnb" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_4.png') }}" alt="Apple" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_5.png') }}" alt="Spark" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_6.png') }}" alt="Samsung" />
-                    </li>
-                </ul>
-                <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
-                    aria-hidden="true">
-                    <li>
-                        <img src="{{ asset('sponsor/logo_1.png') }}" alt="Facebook" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_2.png') }}" alt="Disney" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_3.png') }}" alt="Airbnb" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_4.png') }}" alt="Apple" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_5.png') }}" alt="Spark" />
-                    </li>
-                    <li>
-                        <img src="{{ asset('sponsor/logo_6.png') }}" alt="Samsung" />
-                    </li>
-                </ul>
+                class="w-full flex overflow-hidden relative group 
+                [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]
+                [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-container">
+                <div id="logo" class="flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8  cursor-pointer">
+                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                        src="{{ asset('sponsor/Google_2015_logo.svg.png') }}" alt="Google" />
+                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                        src="{{ asset('sponsor/1199px-Bank_Central_Asia.svg.png') }}" alt="BCA" />
+                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                        src="{{ asset('sponsor/TikTok_logo.svg.png') }}" alt="TikTok" />
+                </div>
             </div>
         </div>
     </section>
@@ -184,9 +160,10 @@
             {{-- ? card --}}
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card 1 --}}
-                @foreach ($blogs as $blog)
+                @foreach ($blogs as $index => $blog)
+                <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="800">
                     <a href="#"
-                        class="flex flex-col gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                        class="flex flex-col h-full gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
                         {{-- ? image --}}
                         <div class="w-full overflow-hidden rounded-xl">
                             <img src="{{ asset($blog->image) }}" alt=""
@@ -203,6 +180,8 @@
                             <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
                                 {{ $blog->narasi_blog }}
                             </p>
+
+                            {{-- ? penulis --}}
                             <div class="flex gap-3 items-center mt-6 max-md:mt-4">
                                 <div class="w-12 h-12 rounded-full overflow-hidden">
                                     <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
@@ -216,6 +195,7 @@
                             </div>
                         </div>
                     </a>
+                </div>
                 @endforeach
             </div>
 

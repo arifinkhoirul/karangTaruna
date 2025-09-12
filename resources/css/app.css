@@ -2,41 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* ? image slider yang dihome indikator aktif */
 [data-carousel-slide-to][aria-current="true"] {
-  @apply bg-white dark:bg-primary;
+@apply bg-white dark:bg-primary;
 }
 
 /* ? image slider yang dihome indikator non-aktif */
 [data-carousel-slide-to][aria-current="false"] {
-  @apply bg-white/50 dark:bg-bg1/50 hover:bg-white dark:hover:bg-primary;
+@apply bg-white/50 dark:bg-bg1/50 hover:bg-white dark:hover:bg-primary;
+}
+
+/* ? animas card */
+@keyframes fadeInUpShort {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -o-transform: translateY(100px);
+}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate__fadeInUpShort {
+  animation-name: fadeInUpShort;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
 }
 
 
 /* ? animasi geser sponsor */
-.logo-slider:hover .animate-infinite-scroll {
-  animation-play-state: paused;
+.logo {
+display: flex;
+flex-shrink: 0;
+animation: scroll 15s linear infinite;
+-webkit-animation: scroll 15s linear infinite;
 }
 
+/* ? animasi jalan ke kiri */
+@keyframes scroll {
+from {
+transform: translateX(0);
+-webkit-transform: translateX(0);
+-moz-transform: translateX(0);
+-ms-transform: translateX(0);
+-o-transform: translateX(0);
+}
+to {
+transform: translateX(-100%);
+-webkit-transform: translateX(-100%);
+-moz-transform: translateX(-100%);
+-ms-transform: translateX(-100%);
+-o-transform: translateX(-100%);
+}
+
+}
+
+/* ? pause kalau hover container */
+.logo-container:hover .logo {
+animation-play-state: paused;
+}
+
+/* ? hide scrollbar for all browsers */
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+display: none; /* Chrome, Safari */
 }
-
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE dan Edge */
-  scrollbar-width: none;     /* Firefox */
+-ms-overflow-style: none; /* IE 10+ */
+scrollbar-width: none; /* Firefox */
 }
-
-
-
 
 @layer components {
-    body {
-        @apply bg-bg1 font-rubik box-border;
-    }
-    .default-section {
-      @apply max-w-screen-3xl mx-auto flex flex-col pt-32 pb-20 px-4 max-md:pt-28 sm:px-10;
-    }
+body {
+@apply bg-bg1 font-rubik box-border;
+}
+.default-section {
+@apply max-w-screen-3xl mx-auto flex flex-col pt-32 pb-20 px-4 max-md:pt-28 sm:px-10;
+}
 }

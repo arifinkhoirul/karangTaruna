@@ -144,32 +144,39 @@
                 <a href="{{ route('user.homepage') }}" class="hidden max-sm:block"><img
                         src="{{ asset('logo-karangtaruna.png') }}" alt="logo" class="w-12" /></a>
 
+
+                {{-- ? overlay item --}}
+                <div id="overlay"
+                    class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40">
+                </div>
+
+                {{-- ? close --}}
+                <button id="toggleClose"
+                    class="absolute lg:hidden top-6 right-7 max-md:top-5 max-md:right-5 z-[100] rounded-full p-3 bg-bg1 border border-gray-200 cursor-pointer hidden animate__animated animate__fadeIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black hover:fill-primary transition-all duration-300 ease-in-out"
+                        viewBox="0 0 320.591 320.591">
+                        <path
+                            d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                            data-original="#000000"></path>
+                        <path
+                            d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                            data-original="#000000"></path>
+                    </svg>
+                </button>
+
                 {{-- ? open menu --}}
                 <div id="collapseMenu"
-                    class="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
-                    <button id="toggleClose"
-                        class="lg:hidden fixed top-5 right-5 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200 cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black"
-                            viewBox="0 0 320.591 320.591">
-                            <path
-                                d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
-                                data-original="#000000"></path>
-                            <path
-                                d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
-                                data-original="#000000"></path>
-                        </svg>
-                    </button>
-
+                    class="lg:!block max-lg:fixed max-lg:bg-white max-sm:w-full max-md:w-[400px] max-lg:w-[500px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-[90] transition-transform duration-500 ease-in-out -translate-x-full lg:translate-x-0">
                     {{-- ? menu list --}}
                     <ul
-                        class="lg:flex gap-x-4 max-lg:space-y-3 max-lg:fixed max-lg:bg-bg1 max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+                        class="lg:flex gap-x-4 max-lg:space-y-3">
                         <li class="mb-6 hidden max-lg:block">
-                            <a href="{{ route('user.homepage') }}" class="flex items-center gap-2"><img
+                            <duv class="flex items-center gap-2"><img
                                     src="{{ asset('logo-karangtaruna.png') }}" alt="logo"
                                     class="w-14 max-md:w-12" />
                                 <span class="capitalize text-textPrimary text-lg font-bold md:text-xl">karang
                                     taruna</span>
-                            </a>
+                            </duv>
                         </li>
                         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
                             <a href='{{ route('user.homepage') }}'
@@ -188,7 +195,7 @@
 
                             {{-- ? dropdown --}}
                             <ul id="pagesMenu"
-                                class="absolute flex flex-col gap-1 p-4 left-0 mt-2 w-56 bg-bg1 shadow-[0_3px_10px_rgb(0,0,0,0.1)] max-lg:w-full rounded-md max-lg:p-0 lg:group-hover:block max-lg:static max-lg:mt-2 max-lg:shadow-none overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                                class="absolute right-0 flex flex-col gap-1 p-4 left-0 mt-2 w-56 bg-bg1 shadow-[0_3px_10px_rgb(0,0,0,0.1)] max-lg:w-full rounded-md max-lg:p-0 lg:group-hover:block max-lg:static max-lg:mt-2 max-lg:shadow-none overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                 <li>
                                     <a href="{{ route('user.data-remaja') }}"
                                         class="flex gap-3 px-4 py-2 text-textSecondary text-[15px] font-normal hover:bg-primary hover:text-bg1 hover:rounded-md transition-all duration-300 ease-in-out"><i
@@ -236,14 +243,20 @@
                     <div class="relative hidden">
                         {{-- ? gambar profile --}}
                         <button id="profileBtn" class="w-12 h-12 rounded-full overflow-hidden border border-primary">
-                            <img src="{{ asset('logo-karangtaruna.png') }}" alt="profile" class="w-full h-full object-cover">
+                            <img src="{{ asset('logo-karangtaruna.png') }}" alt="profile"
+                                class="w-full h-full object-cover">
                         </button>
 
                         {{-- ? dropdown menu profile --}}
-                        <div id="profileMenu" class="absolute p-4 flex flex-col gap-3 right-0 bg-bg1 capitalize w-48 mt-3 text-textSecondary rounded-lg shadow-lg">
-                            <a href="#" class="flex gap-3 px-4 py-2 hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out rounded-lg"><i class="ri-user-5-fill"></i> edit profile</a>
+                        <div id="profileMenu"
+                            class="absolute p-4 flex flex-col gap-3 right-0 bg-bg1 capitalize w-48 mt-3 text-textSecondary rounded-lg shadow-lg">
+                            <a href="#"
+                                class="flex gap-3 px-4 py-2 hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out rounded-lg"><i
+                                    class="ri-user-5-fill"></i> edit profile</a>
                             <form method="POST" action="#" class="">
-                                <button type="submit" class="w-full flex gap-3 px-4 py-2 rounded-lg hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out"><i class="ri-logout-circle-r-line"></i> logout</button>
+                                <button type="submit"
+                                    class="w-full flex gap-3 px-4 py-2 rounded-lg hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out"><i
+                                        class="ri-logout-circle-r-line"></i> logout</button>
                             </form>
                         </div>
                     </div>
@@ -273,6 +286,7 @@
             </div>
         </div>
     </header>
+
 
 
 

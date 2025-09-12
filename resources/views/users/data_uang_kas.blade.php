@@ -109,7 +109,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <button class="p-4  mt-3 text-white bg-green-600">Sisa Saldo : Rp {{number_format($sisaSaldo,'0',',','.') }}</button>
+                    <button class="p-4  mt-3 text-white text-base max-md:text-sm bg-green-600">Sisa Saldo : Rp {{number_format($sisaSaldo,'0',',','.') }}</button>
                 </div>
             </div>
         </div>
