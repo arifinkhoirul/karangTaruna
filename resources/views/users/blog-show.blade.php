@@ -14,10 +14,10 @@
                         blog
                     </a>
                     <span class="text-textPrimary">»</span>
-                    <span class="text-textPrimary">lomba 12 september</span>
+                    <span class="text-textPrimary">{{ $blog->judul }}</span>
                 </h5>
                 <h1 class="capitalize font-semibold text-4xl mb-2 max-xl:text-3xl max-lg:mb-1">
-                    Apa itu Prograssive Web Apps?
+                    {{ $blog->judul }}
                 </h1>
 
                 <div class="flex gap-5 items-center mt-2 max-md:mt-0">
@@ -28,24 +28,20 @@
                     <div class="flex items-center gap-2">
                         <h5 class="font-semibold capitalize text-textPrimary">{{ $blog->user->name }}</h5>
                         <span class="text-textSecondary">•</span>
-                        <p class="text-textSecondary text-sm font-light">{{ Carbon\Carbon::parse($blog->tanggal_post)->format('d F Y') }}</p>
+                        <p class="text-textSecondary text-sm font-light">
+                            {{ Carbon\Carbon::parse($blog->tanggal_post)->format('d F Y') }}</p>
                     </div>
                 </div>
             </div>
 
             {{-- ? isi --}}
             <div class="flex flex-col gap-8 max-md:gap-6">
-                <img src="{{ asset('uploads/blogs/1756540903_IMG_3472.jpg') }}"
-                    alt=""
+                <img src="{{ asset($blog->image) }}" alt=""
                     class="block object-cover rounded-2xl w-full transition-transform duration-300 ease-in-out group-hover:scale-110">
 
-                <p class="text-textSecondary font-light text-lg/9 max-md:text-base">Kecepatan dalam pembuatan suatu produk
-                    merupakan hal penting untuk bersaing di zaman yang serba canggih seperti sekarang ini. Tak terkecuali
-                    ketika kita ingin membuat sebuah aplikasi yang tidak hanya dapat diakses melalui smartphone. Namun, bisa
-                    terakses juga di browser. Tentunya kita membutuhkan teknologi yang dapat menangani hal tersebut maka
-                    dari itu munculah PWA Progressive Web Apps</p>
+                <p class="text-textSecondary font-light text-lg/9 max-md:text-base">{{ $blog->narasi_blog }}s</p>
 
-                <h1 class="capitalize font-semibold text-4xl max-xl:text-3xl">apa itu pwa</h1>
+                {{-- <h1 class="capitalize font-semibold text-4xl max-xl:text-3xl">apa itu pwa</h1>
 
                 <img src="{{ asset('uploads/blogs/1757298074_8820ff7553baaf595822b58c5590b604.jpg') }}" alt=""
                     class="block object-cover rounded-2xl w-full transition-transform duration-300 ease-in-out group-hover:scale-110">
@@ -63,7 +59,7 @@
                     <li>Hanya berjalan dalam kondisi online</li>
                     <li>Hanya berjalan dalam kondisi online</li>
                     <li>Biaya development murah</li>
-                </ul>
+                </ul> --}}
 
 
                 {{-- ? media social --}}
@@ -103,46 +99,47 @@
             {{-- ? card --}}
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card loop --}}
-                @for ($i = 0; $i < 3; $i++)
-                <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                    <a href="#"
-                        class="flex flex-col h-full gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
-                        {{-- ? image --}}
-                        <div class="w-full overflow-hidden rounded-xl">
-                            <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}" alt=""
-                                class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
-                        </div>
-
-                        {{-- ? deskripsi --}}
-                        <div class="flex flex-col gap-3 max-md:gap-2">
-                            <h5 class="text-primary text-base font-semibold uppercase">design</h5>
-                            <h1
-                                class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aliquid!
-                            </h1>
-                            <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem numquam earum
-                                consectetur,
-                                iure aliquid dicta at obcaecati corporis minus pariatur?
-                            </p>
-
-                            {{-- ? penulis --}}
-                            <div class="flex gap-3 items-center mt-6 max-md:mt-4">
-                                <div class="w-12 h-12 rounded-full overflow-hidden">
-                                    <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
-                                        alt=""
-                                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                @foreach ($blogRekomendasi as $blogRekom)
+                    @if ($blogRekom->judul != $blog->judul)
+                        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                            <a href="{{ route('user.blog.show', $blogRekom->id) }}"
+                                class="flex flex-col h-full gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                                {{-- ? image --}}
+                                <div class="w-full overflow-hidden rounded-xl">
+                                    <img src="{{ asset($blogRekom->image) }}" alt=""
+                                        class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
                                 </div>
-                                <div class="flex flex-col">
-                                    <h5 class="font-semibold capitalize text-textPrimary">irul</h5>
-                                    <p class="text-textSecondary text-sm font-light">05-01-99</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endfor
 
+                                {{-- ? deskripsi --}}
+                                <div class="flex flex-col gap-3 max-md:gap-2">
+                                    <h5 class="text-primary text-base font-semibold uppercase">Blog</h5>
+                                    <h1
+                                        class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
+                                        {{ $blogRekom->judul }}
+                                    </h1>
+                                    <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                        {{ $blogRekom->narasi_blog }}
+                                    </p>
+
+                                    {{-- ? penulis --}}
+                                    <div class="flex gap-3 items-center mt-6 max-md:mt-4">
+                                        <div class="w-12 h-12 rounded-full overflow-hidden">
+                                            <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
+                                                alt=""
+                                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <h5 class="font-semibold capitalize text-textPrimary">
+                                                {{ $blogRekom->user->name }}</h5>
+                                            <p class="text-textSecondary text-sm font-light">
+                                                {{ Carbon\Carbon::parse($blogRekom->tanggal_post)->format('d F Y') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
             </div>
 
         </div>

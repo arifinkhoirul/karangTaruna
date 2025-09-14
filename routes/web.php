@@ -8,7 +8,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\PengeluaranKasController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialMediaController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\TeenagerController;
 use App\Http\Controllers\UserController;
 use App\Models\CashBook;
@@ -143,6 +146,27 @@ Route::delete('admin/documentation/delete/{id}', [DocumentationController::class
 
 
 
+Route::get('admin/social-media', [SocialMediaController::class, 'index'])->name('admin.social-media.index');
+Route::post('admin/social-media', [SocialMediaController::class, 'store'])->name('admin.social-media.store');
+Route::get('admin/social-media/edit/{id}', [SocialMediaController::class, 'edit'])->name('admin.social-media.edit');
+Route::put('admin/social-media/update/{id}', [SocialMediaController::class, 'update'])->name('admin.social-media.update');
+Route::delete('admin/social-media/delete/{id}', [SocialMediaController::class, 'destroy'])->name('admin.social-media.destroy');
+
+
+Route::get('admin/portfolio', [PortfolioController::class, 'index'])->name('admin.portfolio.index');
+Route::post('admin/portfolio', [PortfolioController::class, 'store'])->name('admin.portfolio.store');
+Route::get('admin/portfolio/edit/{id}', [PortfolioController::class, 'edit'])->name('admin.portfolio.edit');
+Route::put('admin/portfolio/update/{id}', [PortfolioController::class, 'update'])->name('admin.portfolio.update');
+Route::delete('admin/portfolio/delete/{id}', [PortfolioController::class, 'destroy'])->name('admin.portfolio.destroy');
+Route::put('admin/portfolio/delete/gambar/{id}', [PortfolioController::class, 'deleteImage'])->name('admin.portfolio.deleteImage');
+
+
+
+Route::get('admin/sponsor', [SponsorController::class, 'index'])->name('admin.sponsor.index');
+Route::post('admin/sponsor', [SponsorController::class, 'store'])->name('admin.sponsor.store');
+Route::get('admin/sponsor/edit/{id}', [SponsorController::class, 'edit'])->name('admin.sponsor.edit');
+Route::put('admin/sponsor/update/{id}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
+Route::delete('admin/sponsor/delete/{id}', [SponsorController::class, 'destroy'])->name('admin.sponsor.destroy');
 
 // ----------------------------------------------------------------------------------------------------------------------------------------
 

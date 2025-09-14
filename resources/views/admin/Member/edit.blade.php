@@ -30,6 +30,14 @@
                             @enderror
                         </fieldset>
 
+                        <div class="form-group mt-3">
+                            <label for="narasi_blog" class="form-label">Deskripsi Member</label>
+                            <textarea class="form-control" id="deskripsi_member" name="deskripsi_member" rows="3">{{ old('deskripsi_member', $member->deskripsi_member) }}</textarea>
+                            @error('deskripsi_member')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
                             <input type="text" class="form-control" id="jabatan"

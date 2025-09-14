@@ -20,6 +20,7 @@ class Event extends Model
         'deskripsi',
         'tanggal_mulai',
         'tanggal_selesai',
+        'kalimat_penutup',
         'lokasi',
     ];
 

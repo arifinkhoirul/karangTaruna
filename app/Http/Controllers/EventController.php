@@ -24,6 +24,7 @@ class EventController extends Controller
                 'deskripsi' => 'required',
                 'tanggal_mulai' => 'required',
                 'tanggal_selesai' => 'required',
+                'kalimat_penutup' => 'required',
                 'lokasi' => 'required',
             ],
             [
@@ -32,6 +33,7 @@ class EventController extends Controller
                 'deskripsi.required' => 'masukkan data dengan benar',
                 'tanggal_mulai.required' => 'masukkan data dengan benar',
                 'tanggal_selesai.required' => 'masukkan data dengan benar',
+                'kalimat_penutup.required' => 'masukkan data dengan benar',
                 'lokasi.required' => 'masukkan data dengan benar',
             ],
         );
@@ -75,6 +77,7 @@ class EventController extends Controller
                 'deskripsi' => 'required',
                 'tanggal_mulai' => 'required',
                 'tanggal_selesai' => 'required',
+                'kalimat_penutup' => 'required',
                 'lokasi' => 'required',
             ],
             [
@@ -83,6 +86,7 @@ class EventController extends Controller
                 'deskripsi.required' => 'masukkan data dengan benar',
                 'tanggal_mulai.required' => 'masukkan data dengan benar',
                 'tanggal_selesai.required' => 'masukkan data dengan benar',
+                'kalimat_penutup.required' => 'masukkan data dengan benar',
                 'lokasi.required' => 'masukkan data dengan benar',
             ],
         );

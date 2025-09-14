@@ -68,11 +68,18 @@
                                 <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
                                 <input type="date" class="form-control date" id="tanggal_mulai" name="tanggal_mulai" required placeholder="Pilih Tanggal Mulai">
                             </div>
+
                             <div class="mb-3">
                                 <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
                                 <input type="date" class="form-control date" id="tanggal_selesai" name="tanggal_selesai"
                                     required placeholder="Pilih Tanggal Selesai">
                             </div>
+
+                            <div class="form-group mb-3">
+                                <label for="kalimat_penutup" class="form-label">Kalimat Penutup</label>
+                                <textarea class="form-control" id="kalimat_penutup" name="kalimat_penutup" rows="3" required placeholder="Masukkan Kalimat Penutup"></textarea>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="lokasi" class="form-label">Lokasi</label>
                                 <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Masukkan Nama Lokasi" required>
@@ -119,6 +126,7 @@
                                 <th>Deskripsi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
+                                <th>Kalimat Penutup</th>
                                 <th>Lokasi</th>
                                 <th>Action</th>
                             </tr>
@@ -135,6 +143,7 @@
                                     <td class="text-truncate" style="max-width: 250px">{{ $event->deskripsi }}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->tanggal_mulai)->format(' d F Y') }}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->tanggal_selesai)->format(' d F Y') }}</td>
+                                    <td class="text-truncate">{{ $event->kalimat_penutup }}</td>
                                     <td>{{ $event->lokasi }}</td>
                                     <td class="d-flex gap-2">
                                         <a href="{{ route('admin.event.edit', $event->id) }}"

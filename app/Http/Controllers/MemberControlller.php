@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\SocialMedias;
 use App\Models\Teenager;
 use Illuminate\Http\Request;
 
@@ -19,11 +20,13 @@ class MemberControlller extends Controller
     public function store(Request $request) {
         $validated = $request->validate(
             [
+                'deskripsi_member' => 'required',
                 'teenager_id' => 'required',
                 'jabatan' => 'required',
                 'status' => 'required',
             ],
             [
+                'deskripsi_member.required' => 'masukkan data dengan benar',
                 'teenager_id.required' => 'masukkan data dengan benar',
                 'jabatan.required' => 'masukkan data dengan benar',
                 'status.required' => 'masukkan data dengan benar',
@@ -52,11 +55,13 @@ class MemberControlller extends Controller
 
         $validated = $request->validate(
             [
+                'deskripsi_member' => 'required',
                 'teenager_id' => 'required',
                 'jabatan' => 'required',
                 'status' => 'required',
             ],
             [
+                'deskripsi_member.required' => 'masukkan data dengan benar',
                 'teenager_id.required' => 'masukkan data dengan benar',
                 'jabatan.required' => 'masukkan data dengan benar',
                 'status.required' => 'masukkan data dengan benar',

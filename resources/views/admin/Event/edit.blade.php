@@ -8,7 +8,8 @@
                 <h4 class="card-title">Basic Inputs</h4>
             </div>
 
-            <form class="card-body" action="{{ route('admin.event.update', $event->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="card-body" action="{{ route('admin.event.update', $event->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -58,8 +59,18 @@
                         <div class="form-group">
                             <label for="tanggal_selesai">Tanggal Selesai</label>
                             <input type="date" class="form-control date" id="tanggal_selesai" name="tanggal_selesai"
-                                value="{{ old('tanggal_selesai', $event->tanggal_selesai) }}" placeholder="Enter Tanggal Selesai">
+                                value="{{ old('tanggal_selesai', $event->tanggal_selesai) }}"
+                                placeholder="Enter Tanggal Selesai">
                             @error('tanggal_selesai')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="kalimat_penutup" class="form-label">Kalimat Penutup</label>
+                            <textarea class="form-control" id="kalimat_penutup" name="kalimat_penutup" rows="3" required
+                                placeholder="Masukkan Klaimat Penutup">{{ old('kalimat_penutup', $event->kalimat_penutup) }}</textarea>
+                            @error('kalimat_penutup')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

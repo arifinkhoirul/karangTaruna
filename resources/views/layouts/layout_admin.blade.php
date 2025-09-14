@@ -105,12 +105,51 @@
                                 <span>Data Remaja</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('admin/member*') ? 'active' : '' }}">
+                        <li
+                            class="sidebar-item {{ request()->is('admin/member*') ? 'active' : '' }} {{ request()->is('admin/social-media*') ? 'active' : '' }} {{ request()->is('admin/portfolio*') ? 'active' : '' }}  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-person-vcard"></i>
+                                <span>Pengurus</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->is('admin/member*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.member.index') }}" class="submenu-link">Data
+                                        Pengurus</a>
+                                </li>
+
+                                <li class="submenu-item  {{ request()->is('admin/social-media*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.social-media.index') }}" class="submenu-link">Social
+                                        Media
+                                        Pengurus</a>
+                                </li>
+
+                                <li class="submenu-item  {{ request()->is('admin/portfolio*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.portfolio.index') }}" class="submenu-link">Portfolio
+                                        Pengurus</a>
+                                </li>
+                            </ul>
+
+
+                        </li>
+
+                        {{-- <li class="sidebar-item {{ request()->is('admin/member*') ? 'active' : '' }}">
                             <a href="{{ route('admin.member.index') }}" class='sidebar-link'>
                                 <i class="bi bi-person-vcard"></i>
-                                <span>Anggota</span>
+                                <span>Pengurus</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->is('admin/social-media*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.social-media.index') }}" class='sidebar-link'>
+                                <i class="bi bi-link-45deg"></i>
+                                <span>Social Media Pengurus</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('admin/portfolio*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.portfolio.index') }}" class='sidebar-link'>
+                                <i class="bi bi-award"></i>
+                                <span>Portfolio</span>
+                            </a>
+                        </li> --}}
                         <li class="sidebar-item {{ request()->is('admin/pemasukan-kas*') ? 'active' : '' }}">
                             <a href="{{ route('admin.pemasukan-kas.index') }}" class='sidebar-link'>
                                 <i class="bi bi-cash-stack"></i>
@@ -133,6 +172,12 @@
                             <a href="{{ route('admin.documentation.index') }}" class='sidebar-link'>
                                 <i class="bi bi-share-fill"></i>
                                 <span>Documentation</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('admin/sponsor*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.sponsor.index') }}" class='sidebar-link'>
+                                <i class="bi bi-ubuntu"></i>
+                                <span>Sponsor</span>
                             </a>
                         </li>
                         <a href="{{ route('user.homepage') }}" class='mt-5 btn btn-sm btn-dark'>

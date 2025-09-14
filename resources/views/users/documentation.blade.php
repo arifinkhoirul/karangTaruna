@@ -6,17 +6,21 @@
         <div class="flex flex-col gap-8">
             {{-- ? text baca blog --}}
             <div class="flex flex-col gap-2 max-md:gap-2 overflow-hidden">
-                <h1 class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug animate__animated animate__fadeInUp animate__faster">
+                <h1
+                    class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug animate__animated animate__fadeInUp animate__faster">
                     Dokumentasi</h1>
                 <div class="flex flex-col gap-4 max-md:gap-2">
-                    <p class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed animate__animated animate__fadeInUp">Yuk Kumpulan dokumentasi dari berbagai event yang pernah dilaksanakan.</p>
+                    <p
+                        class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed animate__animated animate__fadeInUp">
+                        Temukan dokumentasi yang kalian cari dari suatu event</p>
                     <div class="h-1 w-20 bg-primary rounded-full animate__animated animate__fadeInLeft"></div>
                 </div>
             </div>
 
             {{-- ? gambar slider --}}
-            <div class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-lg animate__animated animate__zoomIn">
-                <img class="w-full h-full object-cover object-center" src="{{ asset('uploads/banner/Frame 3.jpg') }}"
+            <div
+                class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-2xl">
+                <img class="w-full h-full object-cover object-center" src="{{ asset('background-dokumentasi.png') }}"
                     alt="">
             </div>
 
@@ -26,40 +30,40 @@
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6">
                 {{-- ? card looping --}}
                 @foreach ($documentations as $index => $documentation)
-                <div class="animate__animated animate__fadeInUpShort" style="animation-delay: {{ $index * 0.2 }}s">
-                    <a href="{{ route('user.documentation.show', $documentation->id) }}"
-                        class="flex flex-col h-full gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
-                        {{-- ? image --}}
-                        <div class="w-full overflow-hidden rounded-xl">
-                            <img src="{{ asset($documentation->image) }}" alt=""
-                                class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
-                        </div>
-
-                        {{-- ? deskripsi --}}
-                        <div class="flex flex-col gap-4 max-md:gap-3">
-                            <h5 class="text-primary text-base font-semibold uppercase">DOKUMENTASI</h5>
-                            <h1
-                                class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
-                                {{ $documentation->judul_dokumentasi }}
-                            </h1>
-
-                            {{-- ? tanggal event --}}
-                            <div class="flex gap-3 items-center">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 4C9.73478 4 9.48043 4.10536 9.29289 4.29289C9.10536 4.48043 9 4.73478 9 5V10C9.00006 10.2652 9.10545 10.5195 9.293 10.707L12.293 13.707C12.4816 13.8892 12.7342 13.99 12.9964 13.9877C13.2586 13.9854 13.5094 13.8802 13.6948 13.6948C13.8802 13.5094 13.9854 13.2586 13.9877 12.9964C13.99 12.7342 13.8892 12.4816 13.707 12.293L11 9.586V5C11 4.73478 10.8946 4.48043 10.7071 4.29289C10.5196 4.10536 10.2652 4 10 4Z"
-                                        fill="#667085" />
-                                </svg>
-
-                                <p class="text-textSecondary text-base leading-relaxed line-clamp-1 font-light">
-                                    {{ \Carbon\Carbon::parse($documentation->created_at)->format('d F Y') }}
-                                </p>
-
+                    <div class="animate__animated animate__fadeInUpShort" style="animation-delay: {{ $index * 0.2 }}s">
+                        <a href="{{ route('user.documentation.show', $documentation->id) }}"
+                            class="flex flex-col h-full gap-6 max-md:gap-5 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                            {{-- ? image --}}
+                            <div class="w-full overflow-hidden rounded-xl">
+                                <img src="{{ asset($documentation->image) }}" alt=""
+                                    class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
                             </div>
-                        </div>
-                    </a>
-                </div>
+
+                            {{-- ? deskripsi --}}
+                            <div class="flex flex-col gap-4 max-md:gap-3">
+                                <h5 class="text-primary text-base font-semibold uppercase">DOKUMENTASI</h5>
+                                <h1
+                                    class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
+                                    {{ $documentation->judul_dokumentasi }}
+                                </h1>
+
+                                {{-- ? tanggal event --}}
+                                <div class="flex gap-3 items-center">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 4C9.73478 4 9.48043 4.10536 9.29289 4.29289C9.10536 4.48043 9 4.73478 9 5V10C9.00006 10.2652 9.10545 10.5195 9.293 10.707L12.293 13.707C12.4816 13.8892 12.7342 13.99 12.9964 13.9877C13.2586 13.9854 13.5094 13.8802 13.6948 13.6948C13.8802 13.5094 13.9854 13.2586 13.9877 12.9964C13.99 12.7342 13.8892 12.4816 13.707 12.293L11 9.586V5C11 4.73478 10.8946 4.48043 10.7071 4.29289C10.5196 4.10536 10.2652 4 10 4Z"
+                                            fill="#667085" />
+                                    </svg>
+
+                                    <p class="text-textSecondary text-base leading-relaxed line-clamp-1 font-light">
+                                        {{ \Carbon\Carbon::parse($documentation->created_at)->format('d F Y') }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
 
@@ -106,7 +110,7 @@
             {{-- </nav> --}}
 
             {{-- ? button --}}
-            <div class="text-center ">
+            {{-- <div class="text-center ">
                 <a href="{{ route('user.blog') }}"
                     class=" animate-bounce inline-block px-6 py-3 mt-4 capitalize text-xs lg:px-8 lg:py-4 md:text-sm
                         text-bg1 border border-primary bg-primary
@@ -115,7 +119,9 @@
                         rounded-lg font-medium tracking-wide cursor-pointer
                         focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load
                     more</a>
-            </div>
+            </div> --}}
+
+            {{ $documentations->links('pagination.custom') }}
         </div>
     </section>
 @endsection

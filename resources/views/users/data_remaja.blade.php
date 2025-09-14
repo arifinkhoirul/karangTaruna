@@ -47,8 +47,8 @@
                     </tbody>
                     <tfoot>
                         <tr class="bg-primary text-bg1 font-medium max-md:text-sm">
-                            <td class="px-4 py-3 text-center border border-gray-300 uppercase">total</td>
-                            <td class="px-4 py-3 border border-gray-300">30</td>
+                            <td class="px-4 py-3 text-center border border-gray-300 uppercase">total Remaja</td>
+                            <td class="px-4 py-3 border border-gray-300">{{ $totalDataRemaja }}</td>
                             <td class="px-4 py-3 border border-gray-300" colspan="3"></td>
                         </tr>
                     </tfoot>

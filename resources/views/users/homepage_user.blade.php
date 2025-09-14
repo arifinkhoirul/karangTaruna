@@ -100,7 +100,7 @@
                         We Need Sponsors!
                     </h1>
                     <p
-                        class="text-lg font-light max-lg:text-base leading-relaxed max-md:text-center 
+                        class="text-lg font-light max-lg:text-base leading-relaxed max-md:text-center
                         animate__animated animate__fadeInUp animate__fast">
                         Jadilah sponsor kami dan ikut berkontribusi menciptakan dampak positif
                     </p>
@@ -132,16 +132,14 @@
 
             {{-- ? container sponsor --}}
             <div
-                class="w-full flex overflow-hidden relative group 
+                class="w-full flex overflow-hidden relative group
                 [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]
                 [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-container">
                 <div id="logo" class="flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8  cursor-pointer">
-                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                        src="{{ asset('sponsor/Google_2015_logo.svg.png') }}" alt="Google" />
-                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                        src="{{ asset('sponsor/1199px-Bank_Central_Asia.svg.png') }}" alt="BCA" />
-                    <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                        src="{{ asset('sponsor/TikTok_logo.svg.png') }}" alt="TikTok" />
+                    @foreach ($sponsors as $sponsor)
+                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                            src="{{ asset($sponsor->image) }}" alt="Google" />
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -161,41 +159,42 @@
             <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6 ">
                 {{-- ? card 1 --}}
                 @foreach ($blogs as $index => $blog)
-                <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="800">
-                    <a href="#"
-                        class="flex flex-col h-full gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
-                        {{-- ? image --}}
-                        <div class="w-full overflow-hidden rounded-xl">
-                            <img src="{{ asset($blog->image) }}" alt=""
-                                class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
-                        </div>
+                    <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="800">
+                        <a href="{{ route('user.blog.show', $blog->id) }}"
+                            class="flex flex-col h-full gap-7 max-md:gap-4 rounded-xl p-8 bg-bg1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] cursor-pointer">
+                            {{-- ? image --}}
+                            <div class="w-full overflow-hidden rounded-xl">
+                                <img src="{{ asset($blog->image) }}" alt=""
+                                    class="w-full h-[300px] object-cover object-center rounded-xl max-lg:h-[200px] max-md:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-110">
+                            </div>
 
-                        {{-- ? deskripsi --}}
-                        <div class="flex flex-col gap-3 max-md:gap-2">
-                            <h5 class="text-primary text-base font-semibold uppercase">design</h5>
-                            <h1
-                                class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
-                                {{ $blog->judul }}
-                            </h1>
-                            <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
-                                {{ $blog->narasi_blog }}
-                            </p>
+                            {{-- ? deskripsi --}}
+                            <div class="flex flex-col gap-3 max-md:gap-2">
+                                <h5 class="text-primary text-base font-semibold uppercase">blog</h5>
+                                <h1
+                                    class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
+                                    {{ $blog->judul }}
+                                </h1>
+                                <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                    {{ $blog->narasi_blog }}
+                                </p>
 
-                            {{-- ? penulis --}}
-                            <div class="flex gap-3 items-center mt-6 max-md:mt-4">
-                                <div class="w-12 h-12 rounded-full overflow-hidden">
-                                    <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
-                                        alt=""
-                                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                                </div>
-                                <div class="flex flex-col">
-                                    <h5 class="font-semibold capitalize text-textPrimary">{{ $blog->user->name }}</h5>
-                                    <p class="text-textSecondary text-sm font-light">{{ $blog->tanggal_post }}</p>
+                                {{-- ? penulis --}}
+                                <div class="flex gap-3 items-center mt-6 max-md:mt-4">
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
+                                            alt=""
+                                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <h5 class="font-semibold capitalize text-textPrimary">{{ $blog->user->name }}</h5>
+                                        <p class="text-textSecondary text-sm font-light">
+                                            {{ Carbon\Carbon::parse($blog->tanggal_post)->format('d F Y') }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
 

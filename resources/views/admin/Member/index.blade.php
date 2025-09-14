@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Kelola Data Anggota</h3>
-                    <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi data</p>
+                    <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi
+                        data</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -48,25 +49,34 @@
                                 <select class="form-select" id="basicSelect" name="teenager_id" required>
                                     <option disabled selected hidden>Pilih Nama Remaja</option>
                                     @foreach ($teenagers as $teenager)
-                                        <option value="{{ $teenager->id }}" {{ old('teenager_id') == $teenager->id ? 'selected' : '' }}>
+                                        <option value="{{ $teenager->id }}"
+                                            {{ old('teenager_id') == $teenager->id ? 'selected' : '' }}>
                                             {{ $teenager->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </fieldset>
 
+                            <div class="form-group mb-3">
+                                <label for="deskripsi_member" class="form-label">Deskripsi Member</label>
+                                <textarea class="form-control" id="deskripsi_member" name="deskripsi_member" rows="3"
+                                    placeholder="Nasukkan Deskripsi Member" required></textarea>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="jabatan" class="form-label">Jabatan</label>
                                 <input type="text" class="form-control" id="jabatan" value="{{ old('jabatan') }}"
-                                    name="jabatan"  placeholder="Masukkan Nama" required>
+                                    name="jabatan" placeholder="Masukkan Nama" required>
                             </div>
 
                             <h6>Status</h6>
                             <fieldset class="form-group">
                                 <select class="form-select" id="basicSelect" name="status" required>
                                     <option disabled selected hidden>Pilih Status Remaja</option>
-                                    <option class="text-success" value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
-                                    <option class="text-danger" value="tidak aktif" {{ old('status') == 'tidak aktif' ? 'selected' : '' }}>Tidak
+                                    <option class="text-success" value="aktif"
+                                        {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                                    <option class="text-danger" value="tidak aktif"
+                                        {{ old('status') == 'tidak aktif' ? 'selected' : '' }}>Tidak
                                         Aktif</option>
                                 </select>
                             </fieldset>
@@ -108,7 +118,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
-                                {{-- <th>Image</th> --}}
+                                <th>Deskripsi Member</th>
                                 <th>Jabatan</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -119,6 +129,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $member->teenager->name }}</td>
+                                    <td class="text-truncate" style="max-width: 350px">{{ $member->deskripsi_member }}</td>
                                     {{-- <td>
                                         <img src="{{ asset($member->teenager->image) }}" alt="{{ $member->teenager->name }}"
                                             width="80" class="img-thumbnail">
@@ -130,10 +141,12 @@
                                         <td class="text-danger">{{ $member->status }}</td>
                                     @endif
                                     <td class="d-flex gap-2">
-                                        <a href="{{ route('admin.member.edit', $member->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('admin.member.edit', $member->id) }}"
+                                            class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('admin.member.destroy', $member->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('admin.member.destroy', $member->id) }}" method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
