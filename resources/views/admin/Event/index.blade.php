@@ -143,7 +143,7 @@
                                     <td class="text-truncate" style="max-width: 250px">{{ $event->deskripsi }}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->tanggal_mulai)->format(' d F Y') }}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->tanggal_selesai)->format(' d F Y') }}</td>
-                                    <td class="text-truncate">{{ $event->kalimat_penutup }}</td>
+                                    <td class="text-truncate" style="max-width: 250px">{{ $event->kalimat_penutup }}</td>
                                     <td>{{ $event->lokasi }}</td>
                                     <td class="d-flex gap-2">
                                         <a href="{{ route('admin.event.edit', $event->id) }}"

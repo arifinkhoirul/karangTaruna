@@ -9,6 +9,7 @@
                 <h1
                     class="text-textPrimary text-5xl max-lg:text-4xl max-md:text-3xl capitalize font-bold leading-snug animate__animated animate__fadeInUp animate__faster">
                     Dokumentasi</h1>
+                    {{-- <p> {{ session('name') }}</p> --}}
                 <div class="flex flex-col gap-4 max-md:gap-2">
                     <p
                         class="text-lg font-light text-textSecondary max-lg:text-base max-md:text-sm leading-relaxed animate__animated animate__fadeInUp">

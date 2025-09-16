@@ -13,7 +13,9 @@ use App\Models\Portfolio;
 use App\Models\SocialMedias;
 use App\Models\Sponsor;
 use App\Models\Teenager;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,7 +25,16 @@ class UserController extends Controller
         $mainImages = MainImage::all();
         $sponsors = Sponsor::where('status', 'aktif')->get();
 
-        return view('users.homepage_user', compact('blogs', 'mainImages', 'sponsors'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.homepage_user', compact('blogs', 'mainImages', 'sponsors', 'user'));
     }
 
 
@@ -33,7 +44,16 @@ class UserController extends Controller
         $members = Member::all();
         $socialMedias = SocialMedias::all();
 
-        return view('users.pengurus', compact('members', 'socialMedias'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.pengurus', compact('members', 'socialMedias', 'user'));
     }
 
 
@@ -43,9 +63,18 @@ class UserController extends Controller
         $socialMedia = SocialMedias::where('member_id', $member->id)->first();
         $portfolios = Portfolio::where('member_id', $member->id)->get();
 
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
         // dd($portfolios);
 
-        return view('users.pengurus-show', compact('member', 'socialMedia', 'portfolios'));
+        return view('users.pengurus-show', compact('member', 'socialMedia', 'portfolios', 'user'));
     }
     // ------------------------------------------------------------
 
@@ -55,15 +84,32 @@ class UserController extends Controller
         // $blogs = Blog::take(6)->get();
         $blogs = Blog::orderBy('created_at', 'desc')->paginate(6);
 
-        return view('users.blog', compact('blogs'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.blog', compact('blogs', 'user'));
     }
 
     public function showBlog(int $id) {
         $blog = Blog::find($id);
         $blogRekomendasi = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
 
-        return view('users.blog-show',compact('blog', 'blogRekomendasi'));
+        return view('users.blog-show',compact('blog', 'blogRekomendasi', 'user'));
     }
     // -----------------------------------------------------------------
 
@@ -73,8 +119,16 @@ class UserController extends Controller
     public function event(Request $request) {
         $events = Event::orderBy('created_at', 'desc')->paginate(3);
 
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
 
-        return view('users.event', compact('events'));
+        return view('users.event', compact('events', 'user'));
     }
 
 
@@ -83,7 +137,16 @@ class UserController extends Controller
         $event = Event::find($id);
         $eventRekomendasi = Event::orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('users.event-show', compact('event', 'eventRekomendasi'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.event-show', compact('event', 'eventRekomendasi', 'user'));
     }
 
     // ---------------------------------------------------------------
@@ -94,13 +157,31 @@ class UserController extends Controller
     public function documentations() {
         $documentations = Documentation::orderBy('created_at', 'desc')->paginate(3);
 
-        return view('users.documentation', compact('documentations'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.documentation', compact('documentations', 'user'));
     }
 
     public function showDocumentations(int $id) {
         $documentation = Documentation::find($id);
 
-        return view('users.documentation-show', compact('documentation'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.documentation-show', compact('documentation', 'user'));
     }
     // --------------------------------------------------------------------
 
@@ -108,9 +189,18 @@ class UserController extends Controller
     public function dataRemaja() {
         $teenagers = Teenager::all();
 
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
         $totalDataRemaja = Teenager::count();
         // dd($totalDataRemaja);
-        return view('users.data_remaja', compact('teenagers', 'totalDataRemaja'));
+        return view('users.data_remaja', compact('teenagers', 'totalDataRemaja', 'user'));
     }
 
 
@@ -123,6 +213,99 @@ class UserController extends Controller
 
         $sisaSaldo = $totalPemasukan - $totalPengeluaran;
 
-        return view('users.data_uang_kas', compact('pemasukanKas', 'pengeluaranKas', 'totalPemasukan', 'totalPengeluaran', 'sisaSaldo'));
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.data_uang_kas', compact('pemasukanKas', 'pengeluaranKas', 'totalPemasukan', 'totalPengeluaran', 'sisaSaldo', 'user'));
+    }
+
+
+
+    public function index() {
+        // $user = User::where('id', session('id'));
+        // dd(session('id'));
+
+        if (Auth::check()) {
+            // User sudah login
+            $user = Auth::user();
+            // atau session('employee_id') dsb
+        } else {
+            // Belum login
+            $user = null;
+        }
+
+        return view('users.profile.index', compact('user'));
+    }
+
+
+    public function store(int $id, Request $request) {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'image' => 'nullable',
+        ]);
+
+
+        if ($request->hasFile('image')) {
+        // hapus file lama kalau ada
+            if ($user->image && file_exists(public_path($user->image))) {
+                unlink(public_path($user->image));
+            }
+
+            // simpan file baru
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/profile'), $filename);
+
+            $validated['image'] = 'uploads/profile/' . $filename;
+        }
+
+
+        $user->update($validated);
+
+        return redirect()->back();
+        // return redirect()->route('user.profile.index')->with('status', 'data berhasil ditambahkan');
+    }
+
+
+    public function update(Request $request ,int $id) {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'image' => 'nullable|string',
+            'name' => 'required',
+        ], [
+            'name.required' => 'masukkand data dengan benar'
+        ]);
+
+
+        // upload image
+        if ($request->hasFile('image')) {
+            // hapus image lama kalau ada
+            if ($user->image && file_exists(public_path('uploads/profile/' . $user->image))) {
+                unlink(public_path('uploads/profile/' . $user->image));
+            }
+
+            // simpan image baru
+            $imageName = time() . '_' . $request->image->getClientOriginalName();
+            $request->image->move(public_path('uploads/profile'), $imageName);
+
+            $validated['image'] = $imageName;
+        } else {
+            // jika tidak ada upload baru, tetap gunakan image lama
+            $validated['image'] = $user->image;
+        }
+
+        // update user
+        $user->update($validated);
+
+        return redirect()->route('user.profile.index')->with('success', 'Profile berhasil diperbarui');
+
     }
 }

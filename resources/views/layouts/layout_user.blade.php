@@ -15,7 +15,7 @@
     {{-- <link href="{{ asset('boostrap-file/css/bootstrap.min.css') }} " rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> --}}
 
-    <link rel="shortcut icon" href="{{ asset('mazer/assets/compiled/svg/favicon.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('logo-karangtaruna.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/iconly.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -150,10 +150,12 @@
                     class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-40">
                 </div>
 
+
                 {{-- ? close --}}
                 <button id="toggleClose"
                     class="absolute lg:hidden top-6 right-7 max-md:top-5 max-md:right-5 z-[100] rounded-full p-3 bg-bg1 border border-gray-200 cursor-pointer hidden animate__animated animate__fadeIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black hover:fill-primary transition-all duration-300 ease-in-out"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-3.5 h-3.5 fill-black hover:fill-primary transition-all duration-300 ease-in-out"
                         viewBox="0 0 320.591 320.591">
                         <path
                             d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
@@ -168,12 +170,10 @@
                 <div id="collapseMenu"
                     class="lg:!block max-lg:fixed max-lg:bg-white max-sm:w-full max-md:w-[400px] max-lg:w-[500px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-[90] transition-transform duration-500 ease-in-out -translate-x-full lg:translate-x-0">
                     {{-- ? menu list --}}
-                    <ul
-                        class="lg:flex gap-x-4 max-lg:space-y-3">
+                    <ul class="lg:flex gap-x-4 max-lg:space-y-3">
                         <li class="mb-6 hidden max-lg:block">
-                            <duv class="flex items-center gap-2"><img
-                                    src="{{ asset('logo-karangtaruna.png') }}" alt="logo"
-                                    class="w-14 max-md:w-12" />
+                            <duv class="flex items-center gap-2"><img src="{{ asset('logo-karangtaruna.png') }}"
+                                    alt="logo" class="w-14 max-md:w-12" />
                                 <span class="capitalize text-textPrimary text-lg font-bold md:text-xl">karang
                                     taruna</span>
                             </duv>
@@ -202,6 +202,7 @@
                                             class="bi bi-file-earmark-person-fill flex items-center"></i>
                                         Data Remaja
                                     </a>
+
                                 </li>
                                 <li>
                                     <a href="{{ route('user.data-uang-kas') }}"
@@ -238,39 +239,54 @@
                 {{-- ? button login yang sudah login dan blm login --}}
                 <div class="flex gap-3 max-md:gap-2">
 
+                    @auth
+                        {{-- ? ketika sudah login --}}
+                        <div class="relative">
+                            {{-- ? gambar profile --}}
+                            <button id="profileBtn" class="w-12 h-12 rounded-full overflow-hidden border border-primary">
+                                <img src="{{ asset($user->image) }}" alt="profile" class="w-full h-full object-cover">
+                            </button>
 
-                    {{-- ? ketika sudah login --}}
-                    <div class="relative hidden">
-                        {{-- ? gambar profile --}}
-                        <button id="profileBtn" class="w-12 h-12 rounded-full overflow-hidden border border-primary">
-                            <img src="{{ asset('logo-karangtaruna.png') }}" alt="profile"
-                                class="w-full h-full object-cover">
-                        </button>
-
-                        {{-- ? dropdown menu profile --}}
-                        <div id="profileMenu"
-                            class="absolute p-4 flex flex-col gap-3 right-0 bg-bg1 capitalize w-48 mt-3 text-textSecondary rounded-lg shadow-lg">
-                            <a href="#"
-                                class="flex gap-3 px-4 py-2 hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out rounded-lg"><i
-                                    class="ri-user-5-fill"></i> edit profile</a>
-                            <form method="POST" action="#" class="">
-                                <button type="submit"
-                                    class="w-full flex gap-3 px-4 py-2 rounded-lg hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out"><i
-                                        class="ri-logout-circle-r-line"></i> logout</button>
-                            </form>
+                            {{-- ? dropdown menu profile --}}
+                            <div id="profileMenu"
+                                class="hidden absolute p-4 flex flex-col gap-3 right-0 bg-bg1 capitalize w-80 mt-3 text-textSecondary rounded-lg shadow-lg">
+                                @if ($user->utype != 'user')
+                                    <a href="{{ route('admin.dashboad.index') }}"
+                                        class="flex gap-3 px-4 py-2 hover:bg-white bg-red-600 hover:text-black text-white transition-all duration-300 ease-in-out rounded-lg">Go
+                                        To Dashboard Admin</a>
+                                @endif
+                                <p class="flex gap-3 px-4 py-2 rounded-lg">
+                                    <i class="bi bi-person-fill"></i>
+                                    {{ $user->name }}
+                                </p>
+                                <p class="flex gap-3 px-4 py-2 rounded-lg">
+                                    <i class="bi bi-envelope-fill"></i> {{ $user->email }}
+                                </p>
+                                <a href="{{ route('user.profile.index') }}"
+                                    class="flex gap-3 px-4 py-2 hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out rounded-lg"><i
+                                        class="ri-user-5-fill"></i> Upload Profile Image</a>
+                                <form method="POST" action="{{ route('logout') }}" class="">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full flex gap-3 px-4 py-2 rounded-lg hover:bg-primary hover:text-bg1 transition-all duration-300 ease-in-out"><i
+                                            class="ri-logout-circle-r-line"></i> logout</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @endauth
 
-                    {{-- ? ketika belum login --}}
-                    <div class="flex gap-3 max-md-gap-2">
-                        <a href='{{ route('login') }}'
-                            class="px-5 py-2 text-xs capitalize rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">
-                            login
-                        </a>
-                        <a href='{{ route('register') }}'
-                            class="px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">Sign
-                            up</a>
-                    </div>
+                    @guest
+                        {{-- ? ketika belum login --}}
+                        <div class="flex gap-3 max-md-gap-2">
+                            <a href='{{ route('login') }}'
+                                class="px-5 py-2 text-xs capitalize rounded-xl font-medium cursor-pointer tracking-wide text-primary border border-primary bg-transparent  hover:bg-primary hover:text-white transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm animate-wiggle">
+                                login
+                            </a>
+                            <a href='{{ route('register') }}'
+                                class="px-5 py-2 text-xs rounded-xl font-medium cursor-pointer tracking-wide text-white border border-primary bg-primary hover:bg-red-700 hover:border-red-700 transition-all duration-300 ease-in-out md:px-6 md:py-3 md:text-sm">Sign
+                                up</a>
+                        </div>
+                    @endguest
 
                     <button id="toggleOpen" class="lg:hidden cursor-pointer">
                         <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

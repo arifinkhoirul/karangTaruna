@@ -213,8 +213,9 @@
                                 <img src="{{ asset('mazer/assets/compiled/jpg/1.jpg') }}" alt="Face 1">
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">John Duck</h5>
-                                <h6 class="text-muted mb-0">@johnducky</h6>
+                                <h5 class="font-bold">{{ session('name') }}</h5>
+                                <h6 class="text-muted mb-0">Emai: {{ session('email') }}</h6>
+                                <h6 class="text-muted mb-0 mt-2">Role: {{ session('utype') }}</h6>
                             </div>
                         </div>
                     </div>

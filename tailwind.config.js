@@ -13,14 +13,14 @@ export default {
     theme: {
         extend: {
             animation: {
-                'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                infiniteScrool: 'infinite-scroll 30s linear infinite',
                 wiggle : 'wiggle 0.5s ease-in-out infinite',
                 bounce : 'bouncex 1s infinite',
                 'wiggle-toggle': 'wiggle-pause 7s ease-in-out infinite',
             },
             keyframes: {
                 'infinite-scroll': {
-                        from: { transform: 'translateX(0)' },
+                        from: { transform: 'translateX(50)' },
                         to: { transform: 'translateX(-100%)' },
                 },
                 wiggle : {

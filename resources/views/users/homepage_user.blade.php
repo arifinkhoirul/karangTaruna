@@ -130,20 +130,36 @@
                 sponsor
             </h1>
 
-            {{-- ? container sponsor --}}
+
             <div
                 class="w-full flex overflow-hidden relative group
                 [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]
                 [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-container">
-                <div id="logo" class="flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8  cursor-pointer">
+                <div id="logo" class="animate-infiniteScrool flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8 cursor-pointer">
+                    @foreach ($sponsors as $sponsor)
+                        <img class=" w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
+                    @endforeach
                     @foreach ($sponsors as $sponsor)
                         <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                            src="{{ asset($sponsor->image) }}" alt="Google" />
+                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
+                    @endforeach
+                    @foreach ($sponsors as $sponsor)
+                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
+                    @endforeach
+                    @foreach ($sponsors as $sponsor)
+                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
+                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
 
     {{-- ? baca blog --}}
     <main class="max-w-screen-3xl mx-auto flex flex-col pb-20 px-4 max-md:pb-10 sm:px-10">
