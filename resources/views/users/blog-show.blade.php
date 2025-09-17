@@ -22,7 +22,7 @@
 
                 <div class="flex gap-5 items-center mt-2 max-md:mt-0">
                     <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary max-md:w-10 max-md:h-10">
-                        <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}" alt=""
+                        <img src="{{ asset($blog->user->image) }}" alt=""
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     </div>
                     <div class="flex items-center gap-2">
@@ -39,7 +39,11 @@
                 <img src="{{ asset($blog->image) }}" alt=""
                     class="block object-cover rounded-2xl w-full transition-transform duration-300 ease-in-out group-hover:scale-110">
 
-                <p class="text-textSecondary font-light text-lg/9 max-md:text-base">{{ $blog->narasi_blog }}s</p>
+                {{-- <p class="text-textSecondary font-light text-lg/9 max-md:text-base"> {!! nl2br(e($blog->narasi_blog)) !!}</p> --}}
+                <div class="text-textSecondary font-light text-lg/9 max-md:text-base text-justify content-quill">
+                    {!! $blog->narasi_blog !!}
+                </div>
+
 
                 {{-- <h1 class="capitalize font-semibold text-4xl max-xl:text-3xl">apa itu pwa</h1>
 
@@ -117,14 +121,14 @@
                                         class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                         {{ $blogRekom->judul }}
                                     </h1>
-                                    <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
-                                        {{ $blogRekom->narasi_blog }}
-                                    </p>
+                                    <div class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                        {!! $blogRekom->narasi_blog !!}
+                                    </div>
 
                                     {{-- ? penulis --}}
                                     <div class="flex gap-3 items-center mt-6 max-md:mt-4">
                                         <div class="w-12 h-12 rounded-full overflow-hidden">
-                                            <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
+                                            <img src="{{ asset($blog->user->image) }}"
                                                 alt=""
                                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                         </div>

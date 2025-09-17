@@ -66,7 +66,7 @@
         <div class="grid grid-cols-2 gap-12 max-sm:grid-cols-1 max-md:gap-8 overflow-hidden">
             {{-- ? gambar --}}
             <div class="relative bg-cover bg-center rounded-lg group h-[400px] max-sm:h-[150px] animate__animated animate__fadeInLeft"
-                style="background-image: url('{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}')">
+                style="background-image: url('{{ asset('visi-misi.png') }}')">
                 <div
                     class="absolute inset-0 bg-primary/50 group-hover:bg-transparent transition-all duration-500 ease-in-out rounded-lg">
                 </div>
@@ -129,27 +129,15 @@
             <h1 class="text-4xl max-md:text-3xl capitalize font-bold leading-snug text-center text-[#E4E6EE]">
                 sponsor
             </h1>
-
+            {{-- {{ dd($sponsors) }} --}}
 
             <div
                 class="w-full flex overflow-hidden relative group
                 [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]
                 [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] logo-container">
-                <div id="logo" class="animate-infiniteScrool flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8 cursor-pointer">
+                <div id="logo" class="animate-infinite-scroll flex gap-16 logo pr-16 items-center flex-shrink-0 [&_li]:mx-8 cursor-pointer">
                     @foreach ($sponsors as $sponsor)
                         <img class=" w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
-                    @endforeach
-                    @foreach ($sponsors as $sponsor)
-                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
-                    @endforeach
-                    @foreach ($sponsors as $sponsor)
-                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
-                            src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
-                    @endforeach
-                    @foreach ($sponsors as $sponsor)
-                        <img class="w-32 h-auto object-contain grayscale hover:grayscale-0 transition duration-300 opacity-50 hover:opacity-100"
                             src="{{ asset($sponsor->image) }}" alt="{{ $sponsor->name }}" />
                     @endforeach
                 </div>
@@ -191,14 +179,14 @@
                                     class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                     {{ $blog->judul }}
                                 </h1>
-                                <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
-                                    {{ $blog->narasi_blog }}
-                                </p>
+                                <div class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                    {!! $blog->narasi_blog !!}
+                                </div>
 
                                 {{-- ? penulis --}}
                                 <div class="flex gap-3 items-center mt-6 max-md:mt-4">
                                     <div class="w-12 h-12 rounded-full overflow-hidden">
-                                        <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
+                                        <img src="{{ asset($blog->user->image) }}"
                                             alt=""
                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                     </div>

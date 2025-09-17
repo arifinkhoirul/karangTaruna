@@ -31,15 +31,15 @@
                                 lanjut
                             </h5>
                             <div class="flex gap-6 max-md:gap-4">
-                                <a href="{{ $socialMedia->instagram }}" onclick="event.stopPropagation();"
+                                <a href="{{ $socialMedia->instagram }}" target="_blank" rel="noopener noreferrer"
                                     class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-red-700">
                                     <i class="ri-instagram-fill text-2xl"></i>
                                 </a>
-                                <a href="{{ $socialMedia->tiktok }}" onclick="event.stopPropagation();"
+                                <a href="{{ $socialMedia->tiktok }}" target="_blank" rel="noopener noreferrer"
                                     class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-red-700">
                                     <i class="ri-tiktok-fill text-2xl"></i>
                                 </a>
-                                <a href="{{ $socialMedia->twitter }}" onclick="event.stopPropagation();"
+                                <a href="{{ $socialMedia->twitter }}" target="_blank" rel="noopener noreferrer"
                                     class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-red-700">
                                     <i class="ri-twitter-x-fill text-2xl"></i>
                                 </a>
@@ -62,6 +62,7 @@
                 <div class="grid grid-cols-3 gap-10 max-lg:grid-cols-2 max-sm:grid-cols-1 max-md:gap-6">
                     @foreach ($portfolios as $portfolio)
                         {{-- ? card foto --}}
+                        {{-- {{ dd($portfolios) }} --}}
                         @if ($portfolio->image)
                             <div class="bg-bg1 rounded-xl overflow-hidden shadow-md flex flex-col cursor-pointer group"
                                 onclick="openModal(this)" data-type="foto" data-src="{{ asset($portfolio->image) }}"

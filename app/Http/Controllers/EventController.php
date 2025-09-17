@@ -50,7 +50,7 @@ class EventController extends Controller
         }
 
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         Event::create($validated);
 
@@ -106,7 +106,7 @@ class EventController extends Controller
             $validated['image'] = 'uploads/events/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $event->update($validated);
 
@@ -125,6 +125,6 @@ class EventController extends Controller
 
         $event->delete();
 
-        return redirect()->route('admin.event.index')->with(['status_delete' => 'data berhasil dihapus']);
+        return redirect()->route('admin.event.index')->with(['status' => 'data berhasil dihapus']);
     }
 }

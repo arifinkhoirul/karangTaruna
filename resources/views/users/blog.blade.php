@@ -31,17 +31,17 @@
 
                         {{-- ? deskripsi --}}
                         <div class="flex flex-col gap-3 max-md:gap-2">
-                            <h5 class="text-primary text-base font-semibold uppercase">design</h5>
+                            <h5 class="text-primary text-base font-semibold uppercase">blog</h5>
                             <h1
                                 class="text-textPrimary font-semibold text-2xl line-clamp-2 transition-colors duration-300 group-hover:underline">
                                 {{ ucfirst($blog->judul) }}
                             </h1>
-                            <p class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
-                                {{ ucfirst($blog->narasi_blog) }}
-                            </p>
+                            <div class="text-textSecondary text-base leading-relaxed line-clamp-3 font-light">
+                                {!! ucfirst($blog->narasi_blog) !!}
+                            </div>
                             <div class="flex gap-3 items-center mt-6 max-md:mt-4">
                                 <div class="w-12 h-12 rounded-full overflow-hidden">
-                                    <img src="{{ asset('uploads/blogs/1756540856_Draw-Toothless-Step-24.jpg') }}"
+                                    <img src="{{ asset($blog->user->image) }}"
                                         alt=""
                                         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                 </div>

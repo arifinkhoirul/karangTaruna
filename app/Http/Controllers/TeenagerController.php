@@ -47,7 +47,7 @@ class TeenagerController extends Controller
         }
 
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         Teenager::create($validated);
 
@@ -99,7 +99,7 @@ class TeenagerController extends Controller
             $validated['image'] = 'uploads/teenagers/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $teenager->update($validated);
 
@@ -116,6 +116,6 @@ class TeenagerController extends Controller
 
         $teenager->delete();
 
-        return redirect()->route('admin.data-remaja.index')->with(['status_delete' => 'data berhasil di hapus']);
+        return redirect()->route('admin.data-remaja.index')->with(['status' => 'data berhasil di hapus']);
     }
 }

@@ -9,12 +9,10 @@ use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\MemberControlller;
 use App\Http\Controllers\PengeluaranKasController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\TeenagerController;
 use App\Http\Controllers\UserController;
-use App\Models\CashBook;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -50,22 +48,19 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::middleware(['auth', 'verified', 'role:user,ketua,dokumentasi,sekre,bendahara'])->group(function() {
-
-    Route::get('/profile-user', [UserController::class, 'index'])->name('user.profile.index');
-    Route::post('/profile-user/image/{id}', [UserController::class, 'store'])->name('user.profile.store');
-
-    Route::put('/profile-user/update/{id}', [UserController::class, 'update'])->name('user.profile.update');
-
-
     Route::get('/documentations', [UserController::class, 'documentations'])->name('user.documentation');
     Route::get('/documentations/show/{id}', [UserController::class, 'showDocumentations'])->name('user.documentation.show');
 
 
 
-    Route::get('/data-remaja', [UserController::class, 'dataRemaja'])->name('user.data-remaja');
+Route::middleware(['auth', 'verified', 'role:USR,ketua,dokumentasi,sekre,bendahara'])->group(function() {
 
+    Route::get('/profile-user', [UserController::class, 'index'])->name('user.profile.index');
+    Route::post('/profile-user/image/{id}', [UserController::class, 'store'])->name('user.profile.store');
+    Route::put('/profile-user/update/{id}', [UserController::class, 'update'])->name('user.profile.update');
+
+
+    Route::get('/data-remaja', [UserController::class, 'dataRemaja'])->name('user.data-remaja');
 
 
     Route::get('/data-uang-kas', [UserController::class, 'dataUangKas'])->name('user.data-uang-kas');

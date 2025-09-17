@@ -39,7 +39,7 @@ class CashBookController extends Controller
         );
 
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         CashBook::create($validated);
 
@@ -78,7 +78,7 @@ class CashBookController extends Controller
         );
 
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $cashBook->update($validated);
 
@@ -91,6 +91,6 @@ class CashBookController extends Controller
 
         $cashBook->delete();
 
-        return redirect()->route('admin.pemasukan-kas.index')->with(['status_delete' => 'data berhasil dihapus']);
+        return redirect()->route('admin.pemasukan-kas.index')->with(['status' => 'data berhasil dihapus']);
     }
 }

@@ -36,7 +36,7 @@ class SponsorController extends Controller
         $validated['image'] = 'uploads/sponsor/' . $filename;
     }
 
-    $validated['user_id'] = 1;
+    $validated['user_id'] = session('id');
 
     Sponsor::create($validated);
 
@@ -82,7 +82,7 @@ class SponsorController extends Controller
             $validated['image'] = 'uploads/sponsor/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $sponsor->update($validated);
 
@@ -102,7 +102,7 @@ class SponsorController extends Controller
 
         return redirect()
             ->route('admin.sponsor.index')
-            ->with(['status_delete' => 'data berhasil dihapus']);
+            ->with(['status' => 'data berhasil dihapus']);
 
     }
 }

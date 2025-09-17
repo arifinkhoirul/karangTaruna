@@ -39,7 +39,7 @@ class DocumentationController extends Controller
             $validated['image'] = 'uploads/documentation/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         Documentation::create($validated);
 
@@ -84,7 +84,7 @@ class DocumentationController extends Controller
             $validated['image'] = 'uploads/documentation/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $documentation->update($validated);
 
@@ -103,6 +103,6 @@ class DocumentationController extends Controller
 
         $documentation->delete();
 
-        return redirect()->route('admin.documentation.index')->with(['status_delete' => 'data main image berhasil dihapus']);
+        return redirect()->route('admin.documentation.index')->with(['status' => 'data main image berhasil dihapus']);
     }
 }

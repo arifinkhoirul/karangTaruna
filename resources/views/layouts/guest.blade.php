@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Karang Taruna</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- ? google font --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- <link href="{{ asset('boostrap-file/css/bootstrap.min.css') }} " rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> --}}
 
-    <!-- Scripts -->
+    <link rel="shortcut icon" href="{{ asset('logo-karangtaruna.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/iconly.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+
+    {{-- ? tailwind css via vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -58,8 +68,8 @@
             <!-- Bagian Gambar -->
             <div class="hidden md:block md:w-1/2 relative m-4">
 
-                <img src="{{ request()->is('login') ? asset('uploads/img-auth/img-login.png') : asset('uploads/img-auth/img-register.png') }}" alt="Gambar"
-                    class="object-cover h-full w-full brightness-75 rounded-3xl animate-wiggle">
+                <img src="{{ request()->is('login') ? asset('uploads/img-auth/img-login.png') : asset('uploads/img-auth/img-register.png') }}"
+                    alt="Gambar" class="object-cover h-full w-full brightness-75 rounded-3xl animate-wiggle">
             </div>
         </div>
     </div>

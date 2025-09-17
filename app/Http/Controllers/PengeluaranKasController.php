@@ -34,7 +34,7 @@ class PengeluaranKasController extends Controller
             ],
         );
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         PengeluaranKas::create($validated);
 
@@ -70,7 +70,7 @@ class PengeluaranKasController extends Controller
             ],
         );
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $pengeluaranKas->update($validated);
 
@@ -84,7 +84,7 @@ class PengeluaranKasController extends Controller
 
         $pengeluaranKas->delete();
 
-        return redirect()->route('admin.pengeluaran-kas.index')->with(['status_delete' => 'data pengeluarn berhasil dihapus']);
+        return redirect()->route('admin.pengeluaran-kas.index')->with(['status' => 'data pengeluarn berhasil dihapus']);
     }
 
 }

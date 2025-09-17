@@ -42,7 +42,7 @@ class PortfolioController extends Controller
         $validated['image'] = 'uploads/portfolio/' . $filename;
     }
 
-    $validated['user_id'] = 1;
+    $validated['user_id'] = session('id');
 
     Portfolio::create($validated);
 
@@ -96,7 +96,7 @@ class PortfolioController extends Controller
         }
 
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $portfolio->update($validated);
 
@@ -115,7 +115,7 @@ class PortfolioController extends Controller
 
         return redirect()
             ->route('admin.portfolio.index')
-            ->with(['status_delete' => 'data berhasil dihapus']);
+            ->with(['status' => 'data berhasil dihapus']);
 
     }
 

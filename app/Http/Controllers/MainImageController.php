@@ -37,7 +37,7 @@ class MainImageController extends Controller
             $validated['image'] = 'uploads/mainImages/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         MainImage::create($validated);
 
@@ -81,7 +81,7 @@ class MainImageController extends Controller
             $validated['image'] = 'uploads/mainImages/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $mainImage->update($validated);
 
@@ -100,6 +100,6 @@ class MainImageController extends Controller
 
         $mainImage->delete();
 
-        return redirect()->route('admin.main-image.index')->with(['status_delete' => 'data main image berhasil dihapus']);
+        return redirect()->route('admin.main-image.index')->with(['status' => 'data main image berhasil dihapus']);
     }
 }

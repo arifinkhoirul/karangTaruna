@@ -8,7 +8,8 @@
                 <h4 class="card-title">Basic Inputs</h4>
             </div>
 
-            <form class="card-body" action="{{ route('blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="card-body" id="form-blog" action="{{ route('blog.update', $blog->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -36,19 +37,31 @@
                                 style="max-height: 200px;" class="img-fluid rounded border">
                         </div>
 
-                        <div class="form-group mt-3">
+                        {{-- <div class="form-group mt-3">
                             <label for="narasi_blog" class="form-label">Narasi</label>
                             <textarea class="form-control" id="narasi_blog" name="narasi_blog" rows="3">{{ old('narasi_blog', $blog->narasi_blog) }}</textarea>
                             @error('narasi_blog')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
+                        </div> --}}
+
+                        <div class="mt-2">
+                            <label for="narasi_blog">Narasi</label>
+                            <input type="hidden" name="narasi_blog" id="narasi_blog"
+                                value="{{ old('narasi_blog', $blog->narasi_blog ?? '') }}">
+
+                            <div id="snow" style="height: 200px;"></div>
+                            @error('narasi_blog')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
+
 
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tanggal_post">Tanggal Post</label>
-                            <input type="date" class="form-control" id="tanggal_post" name="tanggal_post"
+                            <input type="date" class="form-control date" id="tanggal_post" name="tanggal_post"
                                 value="{{ old('tanggal_post', $blog->tanggal_post) }}" placeholder="Enter Tanggal">
                             @error('tanggal_post')
                                 <p class="text-danger">{{ $message }}</p>
@@ -84,6 +97,20 @@
                 preview.src = "";
                 preview.style.display = 'none';
             }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#snow', {
+                theme: 'snow'
+            });
+
+            // isi editor dengan value lama
+            quill.root.innerHTML = document.querySelector('#narasi_blog').value;
+
+            document.querySelector('#form-blog').addEventListener('submit', function() {
+                document.querySelector('#narasi_blog').value = quill.root.innerHTML;
+            });
         });
     </script>
 @endsection

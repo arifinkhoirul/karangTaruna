@@ -29,7 +29,7 @@ class SocialMediaController extends Controller
             'twitter.required' => 'masukkan data dengan benar',
         ]);
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         SocialMedias::create($validated);
 
@@ -60,7 +60,7 @@ class SocialMediaController extends Controller
             'twitter.required' => 'masukkan data dengan benar',
         ]);
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $socialMedia->update($validated);
 
@@ -75,7 +75,7 @@ class SocialMediaController extends Controller
 
         $socialMedia->delete();
 
-        return redirect()->route('admin.social-media.index')->with(['status_delete', 'data berhasil diubah']);
+        return redirect()->route('admin.social-media.index')->with(['status', 'data berhasil diubah']);
 
     }
 

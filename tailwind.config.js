@@ -13,14 +13,13 @@ export default {
     theme: {
         extend: {
             animation: {
-                infiniteScrool: 'infinite-scroll 30s linear infinite',
+                'infinite-scroll': 'infinite-scroll 25s linear infinite',
                 wiggle : 'wiggle 0.5s ease-in-out infinite',
                 bounce : 'bouncex 1s infinite',
-                'wiggle-toggle': 'wiggle-pause 7s ease-in-out infinite',
             },
             keyframes: {
                 'infinite-scroll': {
-                        from: { transform: 'translateX(50)' },
+                        from: { transform: 'translateX(0)' },
                         to: { transform: 'translateX(-100%)' },
                 },
                 wiggle : {
@@ -36,15 +35,6 @@ export default {
                     transform: 'translateY(0)',
                     animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
                     },
-                },
-                'wiggle-pause': {
-                    '0%, 6%': { transform: 'rotate(-3deg)' },
-                    '3%': { transform: 'rotate(3deg)' },
-                    '9%': { transform: 'rotate(-3deg)' },
-                    '12%': { transform: 'rotate(3deg)' },
-                    '15%': { transform: 'rotate(-3deg)' },
-                    /* setelah 3 detik (sekitar 43% dari total 7s) diam */
-                    '43%, 100%': { transform: 'rotate(0deg)' },
                 },
             },
             screens: {

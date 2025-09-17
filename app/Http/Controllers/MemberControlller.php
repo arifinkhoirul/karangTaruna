@@ -33,7 +33,7 @@ class MemberControlller extends Controller
             ],
         );
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         Member::create($validated);
 
@@ -68,7 +68,7 @@ class MemberControlller extends Controller
             ],
         );
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $member->update($validated);
 
@@ -81,6 +81,6 @@ class MemberControlller extends Controller
 
         $member->delete();
 
-        return redirect()->route('admin.member.index')->with(['status_delete' => 'data member berhasil dihapus']);
+        return redirect()->route('admin.member.index')->with(['status' => 'data member berhasil dihapus']);
     }
 }

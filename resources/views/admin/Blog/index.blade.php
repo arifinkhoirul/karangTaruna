@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Kelola Blog</h3>
-                    <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi data</p>
+                    <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi
+                        data</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -35,7 +36,7 @@
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content px-3 py-3">
-                    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('blog.store') }}" id="form-blog" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Blog Baru</h5>
@@ -45,7 +46,8 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul</label>
-                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Blog" required>
+                                <input type="text" class="form-control" id="judul" name="judul"
+                                    placeholder="Masukkan Judul Blog" required>
                             </div>
 
                             <div class="mb-3">
@@ -59,14 +61,27 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label for="narasi_blog" class="form-label">Narasi</label>
                                 <textarea class="form-control" id="narasi_blog" name="narasi_blog" rows="3" placeholder="Nasukkan Narasi Blog" required></textarea>
+                            </div> --}}
+
+
+                            <div class="mt-3 mb-3">
+                                <label for="narasi_blog">Narasi</label>
+                                <input type="hidden" name="narasi_blog" id="narasi_blog"
+                                    value="{{ old('narasi_blog') }}">
+
+                                <div id="snow" style="height: 200px;"></div>
+                                @error('narasi_blog')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 mt-3">
                                 <label for="tanggal_post" class="form-label">Tanggal Post</label>
-                                <input type="date" class="form-control date" id="tanggal_post" name="tanggal_post" placeholder="Pilih Tanggal" required>
+                                <input type="date" class="form-control date" id="tanggal_post" name="tanggal_post"
+                                    placeholder="Pilih Tanggal" required>
                             </div>
                         </div>
 
@@ -121,14 +136,15 @@
                                         <img src="{{ asset($blog->image) }}" alt="{{ $blog->judul }}" width="80"
                                             class="img-thumbnail">
                                     </td>
-                                    <td class="text-truncate" style="max-width: 350px">{{ $blog->narasi_blog }}</td>
+                                    <td class="text-truncate" style="max-width: 350px;">
+                                        <div>{{ $blog->narasi_blog }}</div></td>
                                     <td>{{ \Carbon\Carbon::parse($blog->tanggal_post)->format('d F Y') }}</td>
                                     <td class="d-flex gap-2">
                                         <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('blog.destroy', $blog->id) }}"
-                                            method="POST" class="d-inline">
+                                        <form action="{{ route('blog.destroy', $blog->id) }}" method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -208,6 +224,20 @@
                 preview.src = "";
                 preview.style.display = 'none';
             }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#snow', {
+                theme: 'snow'
+            });
+
+            // isi editor dengan value lama
+            quill.root.innerHTML = document.querySelector('#narasi_blog').value;
+
+            document.querySelector('#form-blog').addEventListener('submit', function() {
+                document.querySelector('#narasi_blog').value = quill.root.innerHTML;
+            });
         });
     </script>
 @endsection

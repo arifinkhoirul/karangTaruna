@@ -43,7 +43,7 @@ class BlogController extends Controller
             $validated['image'] = 'uploads/blogs/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         Blog::create($validated);
 
@@ -63,7 +63,7 @@ class BlogController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
 
         $validated = $request->validate(
             [
@@ -95,7 +95,7 @@ class BlogController extends Controller
             $validated['image'] = 'uploads/blogs/' . $filename;
         }
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = session('id');
 
         $blog->update($validated);
 
@@ -117,6 +117,6 @@ class BlogController extends Controller
 
         return redirect()
             ->route('blog.index')
-            ->with(['status_delete' => 'data berhasil dihapus']);
+            ->with(['status' => 'data berhasil dihapus']);
     }
 }

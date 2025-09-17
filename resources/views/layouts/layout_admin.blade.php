@@ -23,10 +23,11 @@
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/app-dark.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/quill/quill.snow.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/quill/quill.bubble.css') }}">
+
     {{-- flatpicker --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-
 
 </head>
 
@@ -294,6 +295,9 @@
 
     <script src="{{ asset('mazer/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/simple-datatables.js') }}"></script>
+
+    <script src="{{ asset('mazer/assets/extensions/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('mazer/assets/static/js/pages/quill.js') }}"></script>
 
     {{-- flatpicker --}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
