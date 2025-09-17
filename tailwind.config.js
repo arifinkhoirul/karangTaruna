@@ -16,8 +16,17 @@ export default {
                 'infinite-scroll': 'infinite-scroll 25s linear infinite',
                 wiggle : 'wiggle 0.5s ease-in-out infinite',
                 bounce : 'bouncex 1s infinite',
+                'wiggle-toggle': 'wiggle-toggle 3s ease-in-out infinite',
             },
             keyframes: {
+                'wiggle-toggle': {
+                    '0%, 10%': { transform: 'rotate(0deg)' },     // mulai diam
+                    '15%, 25%': { transform: 'rotate(-2deg)' },   // goyang kiri
+                    '30%, 40%': { transform: 'rotate(2deg)' },    // goyang kanan
+                    '45%, 55%': { transform: 'rotate(-2deg)' },   // goyang kiri lagi
+                    '60%': { transform: 'rotate(0deg)' },         // kembali diam
+                    '100%': { transform: 'rotate(0deg)' },        // diam sampai ulang
+                },
                 'infinite-scroll': {
                         from: { transform: 'translateX(0)' },
                         to: { transform: 'translateX(-100%)' },
