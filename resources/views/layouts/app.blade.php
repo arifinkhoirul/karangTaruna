@@ -12,9 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
 
-    {{-- <link href="{{ asset('boostrap-file/css/bootstrap.min.css') }} " rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> --}}
-
     <link rel="shortcut icon" href="{{ asset('logo-karangtaruna.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/iconly.css') }}">
 

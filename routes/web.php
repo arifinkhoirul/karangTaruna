@@ -55,6 +55,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified', 'role:USR,ketua,dokumentasi,sekre,bendahara'])->group(function() {
 
+
     Route::get('/profile-user', [UserController::class, 'index'])->name('user.profile.index');
     Route::post('/profile-user/image/{id}', [UserController::class, 'store'])->name('user.profile.store');
     Route::put('/profile-user/update/{id}', [UserController::class, 'update'])->name('user.profile.update');

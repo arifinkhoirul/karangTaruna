@@ -39,10 +39,6 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="">
-                            {{-- <p>{{ session('name') }}</p>
-                            <p>{{ session('utype') }}</p> --}}
-                            {{-- <a href="index.html"><img width="50" height="100" src="{{ asset('logo-karangtaruna.png') }}"
-                                    alt="Logo" srcset=""></a> --}}
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
