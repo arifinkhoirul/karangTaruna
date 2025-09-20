@@ -8,6 +8,7 @@ use App\Models\Documentation;
 use App\Models\Event;
 use App\Models\MainImage;
 use App\Models\Member;
+use App\Models\PemasukanEksternal;
 use App\Models\PengeluaranKas;
 use App\Models\Portfolio;
 use App\Models\SocialMedias;
@@ -19,10 +20,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-
-    public function homepage() {
+    public function homepage()
+    {
         $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        $mainImages = MainImage::all();
+        $mainImages = MainImage::take(20)->get();
         $sponsors = Sponsor::where('status', 'aktif')->get();
 
         if (Auth::check()) {
@@ -37,12 +38,11 @@ class UserController extends Controller
         return view('users.homepage_user', compact('blogs', 'mainImages', 'sponsors', 'user'));
     }
 
-
-
     // pengurus-----------------------------------------------
-    public function pengurus() {
-        $members = Member::all();
-        $socialMedias = SocialMedias::all();
+    public function pengurus()
+    {
+        $members = Member::take(20)->get();
+        $socialMedias = SocialMedias::take(20)->get();
 
         if (Auth::check()) {
             // User sudah login
@@ -56,9 +56,8 @@ class UserController extends Controller
         return view('users.pengurus', compact('members', 'socialMedias', 'user'));
     }
 
-
-
-    public function showPengurus(int $id) {
+    public function showPengurus(int $id)
+    {
         $member = Member::find($id);
         $socialMedia = SocialMedias::where('member_id', $member->id)->first();
         $portfolios = Portfolio::where('member_id', $member->id)->get();
@@ -78,9 +77,9 @@ class UserController extends Controller
     }
     // ------------------------------------------------------------
 
-
     // blog-----------------------------------------------------------
-    public function blog() {
+    public function blog()
+    {
         // $blogs = Blog::take(6)->get();
         $blogs = Blog::orderBy('created_at', 'desc')->paginate(6);
 
@@ -96,7 +95,8 @@ class UserController extends Controller
         return view('users.blog', compact('blogs', 'user'));
     }
 
-    public function showBlog(int $id) {
+    public function showBlog(int $id)
+    {
         $blog = Blog::find($id);
         $blogRekomendasi = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
@@ -109,14 +109,13 @@ class UserController extends Controller
             $user = null;
         }
 
-        return view('users.blog-show',compact('blog', 'blogRekomendasi', 'user'));
+        return view('users.blog-show', compact('blog', 'blogRekomendasi', 'user'));
     }
     // -----------------------------------------------------------------
 
-
-
     // event----------------------------------------------------------
-    public function event(Request $request) {
+    public function event(Request $request)
+    {
         $events = Event::orderBy('created_at', 'desc')->paginate(3);
 
         if (Auth::check()) {
@@ -131,9 +130,8 @@ class UserController extends Controller
         return view('users.event', compact('events', 'user'));
     }
 
-
-
-    public function showEvent(int $id) {
+    public function showEvent(int $id)
+    {
         $event = Event::find($id);
         $eventRekomendasi = Event::orderBy('created_at', 'desc')->take(3)->get();
 
@@ -151,10 +149,9 @@ class UserController extends Controller
 
     // ---------------------------------------------------------------
 
-
-
     // documentations----------------------------------------------------
-    public function documentations() {
+    public function documentations()
+    {
         $documentations = Documentation::orderBy('created_at', 'desc')->paginate(3);
 
         if (Auth::check()) {
@@ -169,7 +166,8 @@ class UserController extends Controller
         return view('users.documentation', compact('documentations', 'user'));
     }
 
-    public function showDocumentations(int $id) {
+    public function showDocumentations(int $id)
+    {
         $documentation = Documentation::find($id);
 
         if (Auth::check()) {
@@ -185,9 +183,9 @@ class UserController extends Controller
     }
     // --------------------------------------------------------------------
 
-
-    public function dataRemaja() {
-        $teenagers = Teenager::all();
+    public function dataRemaja()
+    {
+        $teenagers = Teenager::take(20)->get();
 
         if (Auth::check()) {
             // User sudah login
@@ -203,31 +201,89 @@ class UserController extends Controller
         return view('users.data_remaja', compact('teenagers', 'totalDataRemaja', 'user'));
     }
 
+    public function dataUangKas(Request $request)
+    {
+        // $pemasukanKas = CashBook::take(20)->get();
+        // $pengeluaranKas = PengeluaranKas::take(20)->get();
 
-    public function dataUangKas() {
-        $pemasukanKas = CashBook::all();
-        $pengeluaranKas = PengeluaranKas::all();
+        // $totalPemasukan = CashBook::sum('jumlah');
+        // $totalPengeluaran = PengeluaranKas::sum('jumlah');
 
-        $totalPemasukan = CashBook::sum('jumlah');
-        $totalPengeluaran = PengeluaranKas::sum('jumlah');
+        // $sisaSaldo = $totalPemasukan - $totalPengeluaran;
 
-        $sisaSaldo = $totalPemasukan - $totalPengeluaran;
+        // if (Auth::check()) {
+        //     // User sudah login
+        //     $user = Auth::user();
+        //     // atau session('employee_id') dsb
+        // } else {
+        //     // Belum login
+        //     $user = null;
+        // }
 
-        if (Auth::check()) {
-            // User sudah login
-            $user = Auth::user();
-            // atau session('employee_id') dsb
-        } else {
-            // Belum login
-            $user = null;
+        // return view('users.data_uang_kas', compact('pemasukanKas', 'pengeluaranKas', 'totalPemasukan', 'totalPengeluaran', 'sisaSaldo', 'user'));
+
+        //chat gpt
+        // Ambil query string bulan & tahun
+        $bulan = $request->query('bulan');
+        $tahun = $request->query('tahun');
+
+        // Query dasar pemasukan
+        $pemasukanQuery = CashBook::query();
+
+        if (!empty($bulan)) {
+            $pemasukanQuery->where('bulan', $bulan);
+        }
+        if (!empty($tahun)) {
+            $pemasukanQuery->where('tahun', $tahun);
         }
 
-        return view('users.data_uang_kas', compact('pemasukanKas', 'pengeluaranKas', 'totalPemasukan', 'totalPengeluaran', 'sisaSaldo', 'user'));
+        $pemasukanKas = $pemasukanQuery->get();
+
+
+
+
+        // Query dasar pengeluaran
+        $pemasukanEksternalQuery = PemasukanEksternal::query();
+
+        if (!empty($bulan)) {
+            $pemasukanEksternalQuery->where('bulan', $bulan);
+        }
+        if (!empty($tahun)) {
+            $pemasukanEksternalQuery->where('tahun', $tahun);
+        }
+
+        $pemasukanEksternals = $pemasukanEksternalQuery->get();
+
+
+
+
+
+        // Query dasar pengeluaran
+        $pengeluaranQuery = PengeluaranKas::query();
+
+        if (!empty($bulan)) {
+            $pengeluaranQuery->where('bulan', $bulan);
+        }
+        if (!empty($tahun)) {
+            $pengeluaranQuery->where('tahun', $tahun);
+        }
+
+        $pengeluaranKas = $pengeluaranQuery->get();
+
+        // Hitung total sesuai filter
+        $totalPemasukan = $pemasukanQuery->sum('jumlah');
+        $totalPemasukanEksternal = $pemasukanEksternals->sum('jumlah');
+        $totalPengeluaran = $pengeluaranQuery->sum('jumlah');
+
+        $sisaSaldo = $totalPemasukan + $totalPemasukanEksternal - $totalPengeluaran;
+
+        $user = Auth::check() ? Auth::user() : null;
+
+        return view('users.data_uang_kas', compact('pemasukanKas', 'pengeluaranKas', 'pemasukanEksternals', 'totalPemasukanEksternal' , 'totalPemasukan', 'totalPengeluaran', 'sisaSaldo', 'user', 'bulan', 'tahun'));
     }
 
-
-
-    public function index() {
+    public function index()
+    {
         // $user = User::where('id', session('id'));
         // dd(session('id'));
 
@@ -243,17 +299,16 @@ class UserController extends Controller
         return view('users.profile.index', compact('user'));
     }
 
-
-    public function store(int $id, Request $request) {
+    public function store(int $id, Request $request)
+    {
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
             'image' => 'nullable',
         ]);
 
-
         if ($request->hasFile('image')) {
-        // hapus file lama kalau ada
+            // hapus file lama kalau ada
             if ($user->image && file_exists(public_path($user->image))) {
                 unlink(public_path($user->image));
             }
@@ -266,24 +321,25 @@ class UserController extends Controller
             $validated['image'] = 'uploads/profile/' . $filename;
         }
 
-
         $user->update($validated);
 
         return redirect()->back();
         // return redirect()->route('user.profile.index')->with('status', 'data berhasil ditambahkan');
     }
 
-
-    public function update(Request $request ,int $id) {
+    public function update(Request $request, int $id)
+    {
         $user = User::findOrFail($id);
 
-        $validated = $request->validate([
-            'image' => 'nullable|string',
-            'name' => 'required',
-        ], [
-            'name.required' => 'masukkand data dengan benar'
-        ]);
-
+        $validated = $request->validate(
+            [
+                'image' => 'nullable|string',
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'masukkand data dengan benar',
+            ],
+        );
 
         // upload image
         if ($request->hasFile('image')) {
@@ -306,6 +362,5 @@ class UserController extends Controller
         $user->update($validated);
 
         return redirect()->route('user.profile.index')->with('success', 'Profile berhasil diperbarui');
-
     }
 }

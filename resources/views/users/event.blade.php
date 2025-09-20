@@ -19,8 +19,7 @@
             </div>
 
             {{-- ? gambar slider --}}
-            <div
-                class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-2xl">
+            <div class="relative w-full h-[500px] max-lg:h-auto overflow-hidden rounded-2xl">
                 <img class="w-full h-full object-cover object-center" src="{{ asset('background-event.png') }}"
                     alt="">
             </div>
@@ -93,61 +92,6 @@
                     </div>
                 @endforeach
             </div>
-
-            {{-- ? pagination --}}
-            {{-- <nav class="flex flex-wrap items-center justify-center gap-2 mt-8"> --}}
-            {{-- ? Prev --}}
-            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
-                    <span
-                        class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5.5 1L1.91421 4.58578C1.24755 5.25245 0.914213 5.58579 0.914213 6C0.914213 6.41421 1.24755 6.74755 1.91421 7.41421L5.5 11"
-                                stroke="#FE0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </span>
-                </a> --}}
-
-            {{-- ? number page --}}
-            {{-- <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
-                    href="javascript:;" aria-current="page">1</a>
-
-                <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg bg-primary text-white inline-flex items-center justify-center rounded-full transition-all duration-150 hover:bg-primary hover:text-white"
-                    href="javascript:;">2</a>
-
-                <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
-                    href="javascript:;">...</a>
-
-                <a class="w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-gray-500 inline-flex items-center justify-center border border-gray-200 rounded-full transition-all duration-150 hover:text-primary hover:border-primary"
-                    href="javascript:;">10</a> --}}
-
-            {{-- ? next --}}
-            {{-- <a class="text-gray-500 hover:text-textPrimary p-1 inline-flex items-center" href="javascript:;">
-                    <span
-                        class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-primary">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.5 11L5.08578 7.41421C5.75245 6.74755 6.08579 6.41421 6.08579 6C6.08579 5.58579 5.75245 5.25245 5.08579 4.58579L1.5 1"
-                                stroke="#FE0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </span>
-                </a>
-            </nav> --}}
-
-            {{-- ? button --}}
-            {{-- <div class="text-center ">
-                <a href="{{ route('user.blog') }}"
-                    class=" animate-bounce inline-block px-6 py-3 mt-4 capitalize text-xs lg:px-8 lg:py-4 md:text-sm
-                        text-bg1 border border-primary bg-primary
-                        hover:bg-red-700 hover:border-red-700 hover:text-bg1 hover:scale-105
-                        transition-all duration-300 ease-in-out
-                        rounded-lg font-medium tracking-wide cursor-pointer
-                        focus:ring-2 focus:ring-primary/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">load
-                    more</a>
-            </div> --}}
             {{ $events->links('pagination.custom') }}
     </section>
-
 @endsection

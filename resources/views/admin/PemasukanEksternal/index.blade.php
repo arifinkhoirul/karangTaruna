@@ -8,7 +8,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Kelola Data Pengeluaran Kas</h3>
+                    <h3>Kelola Data Pemasukan Eskternal </h3>
                     <p class="text-subtitle text-muted">Tabel interaktif untuk memudahkan pencarian, pengurutan, dan navigasi data</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -26,7 +26,7 @@
         <!-- Tombol Tambah Blog -->
         <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahBlog">
-                Tambah Pengeluaran Kas
+                Tambah Pemasukan
             </button>
         </div>
 
@@ -35,10 +35,10 @@
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content px-3 py-3">
-                    <form action="{{ route('admin.pengeluaran-kas.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.pemasukan-eksternal.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Data Pengeluaran Kas</h5>
+                            <h5 class="modal-title" id="modalTambahBlogLabel">Tambah Data Pemasukan Eksternal Kas</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
@@ -94,9 +94,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="tanggal_pengeluaran" class="form-label fw-bold">Tanggal Pengeluaran</label>
-                                <input type="date" class="form-control date" id="tanggal_pengeluaran"
-                                    name="tanggal_pengeluaran" required placeholder="Pilih Tanggal Pengeluaran">
+                                <label for="tanggal_pemasukan" class="form-label fw-bold">Tanggal Pemasukan</label>
+                                <input type="date" class="form-control date" id="tanggal_pemasukan"
+                                    name="tanggal_pemasukan" required placeholder="Pilih Tanggal Pemasukan">
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Data Pengeluaran Kas
+                        Data Pemasukan Eksternal
                     </h5>
                 </div>
                 <div class="card-body">
@@ -139,37 +139,37 @@
                                 <th>Tahun</th>
                                 <th>Jumlah</th>
                                 <th>Keterangan</th>
-                                <th>Tanggal Pengeluaran</th>
+                                <th>Tanggal Pemasukan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allPengeluaranKas as $pengeluaranKas)
+                            @foreach ($allPemasukanEskternal as $PemasukanEskternal)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $pengeluaranKas->bulan }}</td>
-                                    <td>{{ $pengeluaranKas->tahun }}</td>
-                                    <td>Rp.{{ number_format($pengeluaranKas->jumlah) }}</td>
-                                    <td>{{ $pengeluaranKas->keterangan }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($pengeluaranKas->tanggal_pengeluaran)->format('d F Y') }}
+                                    <td>{{ $PemasukanEskternal->bulan }}</td>
+                                    <td>{{ $PemasukanEskternal->tahun }}</td>
+                                    <td>Rp.{{ number_format($PemasukanEskternal->jumlah) }}</td>
+                                    <td>{{ $PemasukanEskternal->keterangan }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($PemasukanEskternal->tanggal_pengeluaran)->format('d F Y') }}
                                     </td>
                                     <td class="d-flex gap-2">
-                                        <a href="{{ route('admin.pengeluaran-kas.edit', $pengeluaranKas->id) }}"
+                                        <a href="{{ route('admin.pemasukan-eksternal.edit', $PemasukanEskternal->id) }}"
                                             class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('admin.pengeluaran-kas.destroy', $pengeluaranKas->id) }}"
+                                        <form action="{{ route('admin.pemasukan-eksternal.destroy', $PemasukanEskternal->id) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#confirmDeleteModal-{{ $pengeluaranKas->id }}">
+                                                data-bs-target="#confirmDeleteModal-{{ $PemasukanEskternal->id }}">
                                                 <i class="bi bi-trash"></i>
                                             </button>
 
 
                                             <!-- Modal alert hapus-->
-                                            <div class="modal fade" id="confirmDeleteModal-{{ $pengeluaranKas->id }}"
+                                            <div class="modal fade" id="confirmDeleteModal-{{ $PemasukanEskternal->id }}"
                                                 tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content rounded-3 shadow">
@@ -202,7 +202,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button class="btn btn-danger">Rp {{ number_format($totalPengeluaran, '0', ',', '.') }}</button>
+                    <button class="btn btn-success">Rp {{ number_format($totalPengeluaran, '0', ',', '.') }}</button>
 
                 </div>
             </div>
@@ -221,5 +221,6 @@
                 bsAlert.close();
             }
         }, 1500); // 3 detik
+
     </script>
 @endsection

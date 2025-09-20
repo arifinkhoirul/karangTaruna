@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\MemberControlller;
+use App\Http\Controllers\PemasukanEksternalController;
 use App\Http\Controllers\PengeluaranKasController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SocialMediaController;
@@ -172,6 +173,14 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('admin/pengeluaran-kas/edit/{id}', [PengeluaranKasController::class, 'edit'])->name('admin.pengeluaran-kas.edit');
         Route::put('admin/pengeluaran-kas/update/{id}', [PengeluaranKasController::class, 'update'])->name('admin.pengeluaran-kas.update');
         Route::delete('admin/pengeluaran-kas/delete/{id}', [PengeluaranKasController::class, 'destroy'])->name('admin.pengeluaran-kas.destroy');
+
+
+
+        Route::get('admin/pemasukan-eksternal', [PemasukanEksternalController::class, 'index'])->name('admin.pemasukan-eksternal.index');
+        Route::post('admin/pemasukan-eksternal', [PemasukanEksternalController::class, 'store'])->name('admin.pemasukan-eksternal.store');
+        Route::get('admin/pemasukan-eksternal/edit/{id}', [PemasukanEksternalController::class, 'edit'])->name('admin.pemasukan-eksternal.edit');
+        Route::put('admin/pemasukan-eksternal/update/{id}', [PemasukanEksternalController::class, 'update'])->name('admin.pemasukan-eksternal.update');
+        Route::delete('admin/pemasukan-eksternal/delete/{id}', [PemasukanEksternalController::class, 'destroy'])->name('admin.pemasukan-eksternal.destroy');
     });
 
 

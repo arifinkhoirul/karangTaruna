@@ -224,6 +224,12 @@
                                     <span>Pemasukan Kas</span>
                                 </a>
                             </li>
+                            <li class="sidebar-item {{ request()->is('admin/pemasukan-eksternal*') ? 'active' : '' }}">
+                                <a href="{{ route('admin.pemasukan-eksternal.index') }}" class='sidebar-link'>
+                                    <i class="bi bi-cash-stack"></i>
+                                    <span>Pemasukan Eksternal</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item {{ request()->is('admin/pengeluaran-kas*') ? 'active' : '' }}">
                                 <a href="{{ route('admin.pengeluaran-kas.index') }}" class='sidebar-link'>
                                     <i class="bi bi-cash-stack"></i>

@@ -53,6 +53,7 @@ class BlogController extends Controller
     }
 
 
+
     public function edit(int $id)
     {
         $blog = Blog::find($id);
