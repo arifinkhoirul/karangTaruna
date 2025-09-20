@@ -20,19 +20,33 @@ modalMedia.innerHTML = `<img src="${src}" class="w-full rounded-xl object-contai
 
 // Kalau video
 else if (type === "video") {
-  // kasih placeholder dulu biar transisi lebih smooth
+  let embedSrc = src;
+
+  // convert youtu.be → embed
+  if (embedSrc.includes("youtu.be")) {
+    const videoId = embedSrc.split("youtu.be/")[1];
+    embedSrc = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  // convert youtube.com/watch?v= → embed
+  if (embedSrc.includes("watch?v=")) {
+    const videoId = embedSrc.split("watch?v=")[1].split("&")[0];
+    embedSrc = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  // placeholder biar transisi modal jalan dulu
   modalMedia.innerHTML = `
     <div style="width:100%; aspect-ratio:16/9; border-radius:12px; background:#000; display:flex; align-items:center; justify-content:center;">
       <span style="color:white; font-size:14px; font-family:sans-serif;">Loading video...</span>
     </div>
   `;
 
-  // setelah animasi modal jalan, baru inject iframe
+  // inject iframe setelah 200ms
   setTimeout(() => {
     modalMedia.innerHTML = `
       <div style="width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden;">
         <iframe 
-          src="${src}" 
+          src="${embedSrc}" 
           style="width:100%; height:100%; border-radius:12px;" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -40,8 +54,10 @@ else if (type === "video") {
         </iframe>
       </div>
     `;
-  }, 200); // delay 200ms biar nunggu transisi
+  }, 200);
 }
+
+
 
 modalTitle.innerText = title || "";
 modalDesc.innerText = desc || "";

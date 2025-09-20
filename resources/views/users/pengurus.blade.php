@@ -54,7 +54,7 @@
                                             <a href="{{ $socialMedia->instagram }}" onclick="event.stopPropagation();"
                                                 target="_blank" rel="noopener noreferrer"
                                                 class="w-12 h-12 border border-bg1 rounded-full flex items-center justify-center
-                                max-xl:w-10 max-xl:h-10 transition-colors duration-300 hover:bg-bg1 hover:text-primary">
+                                                max-xl:w-10 max-xl:h-10 transition-colors duration-300 hover:bg-bg1 hover:text-primary">
                                                 <i class="ri-instagram-fill text-2xl max-xl:text-xl"></i>
                                             </a>
                                             <a href="{{ $socialMedia->tiktok }}" onclick="event.stopPropagation();"
